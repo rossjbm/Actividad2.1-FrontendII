@@ -21,7 +21,7 @@ const usuariosSchema = new mongoose.Schema(
             type: String
         },
         correo: {
-            type: Number
+            type: String
         },
         tlf: {
             type: String
@@ -30,7 +30,7 @@ const usuariosSchema = new mongoose.Schema(
             type: String
         },
         favoritos: {
-            type: [Array]
+            type: [String]
         }
     },
     {
@@ -38,4 +38,6 @@ const usuariosSchema = new mongoose.Schema(
     }
 )
 
-module.exports = mongoose.model('usuarios', usuariosSchema, 'usuarios') //primer argumento: nombre del modelo; segundo argumento: esquema; tercer argumento: nombre de la collection
+
+
+module.exports = mongoose.model('usuariosModel', usuariosSchema, 'usuarios') //primer argumento: nombre del modelo; segundo argumento: esquema; tercer argumento: nombre de la collection
