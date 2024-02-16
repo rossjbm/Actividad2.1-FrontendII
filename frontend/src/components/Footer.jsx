@@ -1,5 +1,5 @@
 import { CiInstagram } from "react-icons/ci";
-import { VscGithubAlt } from "react-icons/vsc";
+import { FaGithub } from "react-icons/fa";
 import { PiTelegramLogo } from "react-icons/pi";
 
 export function Footer() {
@@ -17,7 +17,7 @@ export function Footer() {
                 <p className="text-lg">electrodom@correoficticio.com</p>
                 <div className="flex gap-6">
                     <a href='#' className="bg-white p-1 rounded-full shadow-xl hover:scale-110"><CiInstagram className="text-4xl text-black-100"/></a>
-                    <a href='#' className="bg-white p-1 rounded-full shadow-xl hover:scale-110"><VscGithubAlt className="text-4xl text-black-100"/></a>
+                    <a href='#' className="bg-white p-1 rounded-full shadow-xl hover:scale-110"><FaGithub className="text-4xl text-black-100"/></a>
                     <a href='#' className="bg-white p-1 rounded-full shadow-xl hover:scale-110"><PiTelegramLogo className="text-4xl text-black-100"/></a>
                 </div>
                 <p className="text-sm text-black-100">© 2024 Todos los derechos reservados</p>
