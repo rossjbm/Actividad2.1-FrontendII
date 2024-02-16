@@ -1,29 +1,43 @@
-import Logo from "../assets/logoMientras.jpeg"
+import { useState } from "react";
 import { IoMenu } from "react-icons/io5";
-import { B_iniciar } from "./botones/B_iniciar";
-import { B_registrar } from "./botones/B_registrar";
+import { B_inicio } from "./botones/B_inicio";
+import { B_menu } from "./botones/B_menu";
+
+//estilos
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
 
 
-
-export function Header({sesion}){
+export function Header({sesion, formInicio, setFormInicio, menu, setMenu}){
 
     return (<>
-        <header>
-            <img src="https://github.com/rossjbm/Actividad2.1-FrontendII/blob/main/img/Logo.png?raw=true" alt="Logo ElectroDom" className=" h-20 rounded-3xl "/>
-
-            <div>
-                {sesion===0 ? 
-                    <>
-                        <div>
-                            <B_iniciar/>
-                            <B_registrar/>
-                        </div>
-                    </>
-                    : <>
-                        <button onClick={() => {}}><IoMenu/></button>
-                    </>
-                }
-            </div>
-        </header>
+        <Navbar className="bg-slate-600">
+            <Container>
+            <Navbar.Brand>
+                <img
+                alt="Logo ElectroDom"
+                src="https://github.com/rossjbm/Actividad2.1-FrontendII/blob/main/img/Logo.png?raw=true"
+                width="30"
+                height="30"
+                className="d-inline-block align-top"
+                />{' '}
+                ElectroDom
+            </Navbar.Brand>
+            <Navbar.Brand className="m-0 p-0">
+                <div className="flex items-center">
+                    {sesion===0 ? 
+                        <>
+                            <div>
+                                <B_inicio formInicio={formInicio} setFormInicio={setFormInicio}/>
+                            </div>
+                        </>
+                        : <>
+                            <B_menu menu={menu} setMenu={setMenu}/>
+                        </>
+                    }
+                </div>
+            </Navbar.Brand>
+            </Container>
+        </Navbar>
     </>)
 }
