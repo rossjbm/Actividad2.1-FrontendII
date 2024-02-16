@@ -6,10 +6,11 @@ import { Header } from "./componentes/Header"
 
 function App() {
   const [sesion, setSesion] = useState(0);
+  const [formInicio, setFormInicio] = useState(true);
 
   return (
     <>
-      <Header/>
+      <Header sesion={sesion} formInicio={formInicio} setFormInicio={setFormInicio} />
       <h1>Tienda de Electrodomesticos</h1>
       
     </>
