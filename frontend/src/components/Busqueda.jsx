@@ -1,37 +1,60 @@
 import { useState, useEffect } from "react"
 import { mostrarSeccion } from "../functions/F_mostrar";
+import { ListarProductos } from "../functions/F_fetch";
+import { Buscar } from "../functions/F_busqueda";
 
 const TodasCategorias = ["Nevera", "Lavadora", "Aire Acondicionado", "Microondas", "Licuadora", "Televisor", "Congelador"]
 
-export function Busqueda() {
-    const [resultado, setResultado] = useState()
+export function Busqueda({resultado, setResultado, cargar, setCargar}) {
     const [categoria, setCategoria] = useState([]);
     const [valor, setValor] = useState("");
     const [seleccionar, setSeleccionar] = useState(false);
 
-    useEffect(() => {
-        if (valor || categoria) {
+    useEffect( () => {
+        async function fetchData() {
+            if (valor || categoria) {
+                setCargar(true)
 
-            const timer = setTimeout(() => { //espera por si hay un cambio
-                handleChange();
-            }, 2000);
-        
-            return () => { //al cambiar el valor
-                clearTimeout(timer); //limpiamos tiempo
-                setResultado([]); //limpiamos resultados
-            };
-        } else {
-            console.log("mostrar todo")
+                const timer = setTimeout(() => { //espera por si hay un cambio
+                    handleChange();
+                    setCargar(false)
+                }, 2000);
+    
+                return () => { //al cambiar el valor
+                    clearTimeout(timer); //limpiamos tiempo
+                    setResultado([]); //limpiamos resultados
+                    setCargar(true)
+                };
+            } else {
+                const documentos = await servidor();
+                setResultado(documentos);
+            }
         }
+        fetchData();
     }, [valor, categoria]);
 
+    useEffect( () => {
+        !resultado ? setCargar(true) : resultado.length===0 ? setCargar(false) : setCargar(false)
+    }, [resultado])
+
     //enviamos al backend
-    async function handleChange() {
-        console.log("valor : ", valor, " categoria: ", categoria)
+    async function servidor(){
         console.log("estamos en mandar al backend. mostrar resultados")
+        const documentos = await ListarProductos()
+        setResultado(documentos)
+        return documentos
+    }
+
+    async function handleChange() {
+        console.log(resultado)
+        console.log("buscar")
+        const documentos = await servidor()
+        const resp = Buscar(valor, categoria, documentos)
+        setResultado(resp)
     }
 
     return(<>
+    {console.log(resultado)}
         <div className="flex flex-col justify-between items-center gap-10 my-12">
             <input type="text" placeholder="Ingresa nombre o descripción..." value={valor} onChange={(e) => {setValor(e.target.value)}} className="w-11/12 h-14 rounded bg-orange-200 px-3 focus:outline-none focus:border-2 focus:border-orange-300 focus:bg-white text-2xl placeholder:text-black-100 shadow-2xl"></input>
 
