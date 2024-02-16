@@ -4,26 +4,32 @@ import { FaHeart } from "react-icons/fa6";
 import { Menu } from "./components/Menu";
 import { Header } from "./components/Header";
 import { Registrar } from "./components/FormRegistrar";
+import { Landing } from './components/Landing';
 
 function App() {
-  const [sesion, setSesion] = useState(1);
+  const [sesion, setSesion] = useState(0);
   const [menu, setMenu] = useState(false)
   const [formInicio, setFormInicio] = useState(true);
   //secciones
-  const [inicioSection, setInicioSection] = useState(false)
-  const [favoritosSection, setFavoritosSection] = useState(false)
-  const [perfilSection, setPerfilSection] = useState(false)
+  const [inicioMostrar, setInicioMostrar] = useState(false)
+  const [favoritosMostrar, setFavoritosMostrar] = useState(false)
+  const [perfilMostrar, setPerfilMostrar] = useState(false)
 
 
   return (
     <>
-      <Menu menu={menu} setMenu={setMenu} sesion={sesion} setFavoritosSection={setFavoritosSection} setInicioSection={setInicioSection} setPerfilSection={setPerfilSection} />
+      <Menu menu={menu} setMenu={setMenu} sesion={sesion} setFavoritosMostrar={setFavoritosMostrar} setInicioMostrar={setInicioMostrar} setPerfilMostrar={setPerfilMostrar} />
+
       <Header sesion={sesion} formInicio={formInicio} setFormInicio={setFormInicio} menu={menu} setMenu={setMenu}/>
-      <h1>Tienda de Electrodomesticos</h1>
-      {favoritosSection ? <h2>FAVORITO</h2> : <></>}
-      {inicioSection ? <h2>INICIO</h2> : <></>}
-      {perfilSection ? <h2>PERFIL</h2> : <></>}
-      <Registrar></Registrar>
+
+      {sesion===0 ? 
+        <Landing formInicio={formInicio} setFormInicio={setFormInicio}/>
+      : <></>}
+
+      {favoritosMostrar ? <h2>FAVORITO</h2> : <></>}
+      {inicioMostrar ? <h2>INICIO</h2> : <></>}
+      {perfilMostrar ? <h2>PERFIL</h2> : <></>}
+      {/* <Registrar></Registrar> */}
     </>
   )
 }

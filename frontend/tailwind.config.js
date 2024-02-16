@@ -5,7 +5,29 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      'white': '#ffffff',
+      'black': {
+        300: '#00000',
+        200: '#212226',
+        100: '#000000b3',
+      },
+      'grey': {
+        300: '#A68B80',
+        100: '#C0B7B0',
+      },
+      'orange':{
+        300: '#F38749',
+        200: '#FBBA94',
+      },
+    },
+    extend: {
+      backgroundImage: {
+        'fondoLocal': "url('/src/assets/local.jpeg')",
+      }
+    },
   },
   plugins: [],
 }
