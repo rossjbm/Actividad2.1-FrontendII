@@ -3,11 +3,12 @@ import { Button, Card } from 'react-bootstrap';
 import { FaHeart } from "react-icons/fa6";
 import { Menu } from "./components/Menu";
 import { Header } from "./components/Header";
-import { Registrar } from "./components/FormRegistrar";
 import { Landing } from './components/Landing';
+import { Footer } from './components/Footer';
+import { Inicio } from './components/Inicio';
 
 function App() {
-  const [sesion, setSesion] = useState(0);
+  const [sesion, setSesion] = useState(1);
   const [menu, setMenu] = useState(false)
   const [formInicio, setFormInicio] = useState(true);
   //secciones
@@ -18,18 +19,22 @@ function App() {
 
   return (
     <>
-      <Menu menu={menu} setMenu={setMenu} sesion={sesion} setFavoritosMostrar={setFavoritosMostrar} setInicioMostrar={setInicioMostrar} setPerfilMostrar={setPerfilMostrar} />
+      <header>
+        <Menu menu={menu} setMenu={setMenu} sesion={sesion} setFavoritosMostrar={setFavoritosMostrar} setInicioMostrar={setInicioMostrar} setPerfilMostrar={setPerfilMostrar} />
 
-      <Header sesion={sesion} formInicio={formInicio} setFormInicio={setFormInicio} menu={menu} setMenu={setMenu}/>
+        <Header sesion={sesion} formInicio={formInicio} setFormInicio={setFormInicio} menu={menu} setMenu={setMenu}/> 
+      </header>
 
-      {sesion===0 ? 
-        <Landing formInicio={formInicio} setFormInicio={setFormInicio}/>
-      : <></>}
+      <main className='min-h-[640px] sm:min-h-96'>
+        {sesion===0 ? 
+          <Landing formInicio={formInicio} setFormInicio={setFormInicio}/>
+        : <> <Inicio/> </>}
 
-      {favoritosMostrar ? <h2>FAVORITO</h2> : <></>}
-      {inicioMostrar ? <h2>INICIO</h2> : <></>}
-      {perfilMostrar ? <h2>PERFIL</h2> : <></>}
-      {/* <Registrar></Registrar> */}
+        {favoritosMostrar ? <h2>FAVORITO</h2> : <></>}
+        {inicioMostrar ? <h2>INICIO</h2> : <></>}
+        {perfilMostrar ? <h2>PERFIL</h2> : <></>}
+      </main>
+      <Footer/>
     </>
   )
 }

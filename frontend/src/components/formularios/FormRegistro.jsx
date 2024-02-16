@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import { EnvioRegistro } from '../../functions/F_fetch';
+import { mostrarSeccion } from '../../functions/F_mostrar';
+
+// estilos
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 
@@ -17,14 +21,11 @@ export function FormRegistro() {
     const handleChange = (e) => {
         setRegistro({ ...registro, [e.target.name]: e.target.value})
     };
-    const enviar = (e) => {
+    const enviar = async (e) => {
         e.preventDefault();
         console.log(registro);
+        await EnvioRegistro(registro)
     };
-    const claveAdmin = (e) => {
-        e.preventDefault();
-        !admin ? setAdmin(true) : setAdmin(false)
-    }
     
     return (<>
         <Form className='p-3 my-20 bg-orange-200 rounded'>
@@ -55,7 +56,7 @@ export function FormRegistro() {
             </FloatingLabel>
 
             <div className='text-center'>
-                <button className="text-sm " onClick={claveAdmin}>¿Serás administrador? Presiona aquí</button>
+                <button className="text-sm " onClick={(e) => {mostrarSeccion(e, admin, setAdmin)}}>¿Serás administrador? Presiona aquí</button>
             </div>
 
             {admin ? <>

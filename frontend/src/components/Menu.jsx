@@ -6,8 +6,8 @@ export function Menu({menu, setMenu, sesion, setFavoritosMostrar, setInicioMostr
     return (<>
         {/* si menu esta abierto */}
         {menu ? 
-            <button onClick={() => {setMenu(false); console.log("salir")}} className="flex justify-end w-full fixed top-0 right-0 z-10 h-full">
-                <nav className="w-1/2 h-full p-2 bg-slate-500 ">
+            <button onClick={() => {setMenu(false); console.log("salir")}} className="flex justify-end w-full fixed top-0 right-0 z-10 h-full bg-black-100">
+                <nav className="w-1/2 h-full p-2 bg-orange-200 ">
 
                     {/* salir del menu */}
                     <div className="mb-4 flex">
@@ -17,7 +17,7 @@ export function Menu({menu, setMenu, sesion, setFavoritosMostrar, setInicioMostr
                     {sesion===1 ? 
 
                     // menu de navegacion cuando esta el cliente
-                    <div className="flex row justify-center gap-10 w-full items-center p-0 m-0" >
+                    <div className="flex flex-col justify-center gap-10 w-full items-center p-0 m-0" >
                         <button className="text-xl" onClick={() => {S_cliente(1, 0, 0, {setFavoritosMostrar}, {setInicioMostrar}, {setPerfilMostrar})}}>Inicio</button>
                         <button className="text-xl" onClick={() => {S_cliente(0, 1, 0, {setFavoritosMostrar}, {setInicioMostrar}, {setPerfilMostrar})}} >Favoritos</button>
                         <button className="text-xl" onClick={() => {S_cliente(0, 0, 1, {setFavoritosMostrar}, {setInicioMostrar}, {setPerfilMostrar})}} >Perfil</button>
@@ -27,7 +27,7 @@ export function Menu({menu, setMenu, sesion, setFavoritosMostrar, setInicioMostr
                     : sesion===2 ?
 
                     // menu de navegacuion cuando esta el administrador
-                    <div className="flex row justify-center gap-10 w-full items-center p-0 m-0">
+                    <div className="flex flex-col justify-center gap-10 w-full items-center p-0 m-0">
                         <button className="text-xl">Inicio</button>
                         <button className="text-xl">Usuarios</button>
                         <button className="text-xl">Inventario</button>

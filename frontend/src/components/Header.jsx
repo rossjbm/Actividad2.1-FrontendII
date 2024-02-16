@@ -10,7 +10,7 @@ import Navbar from 'react-bootstrap/Navbar';
 export function Header({sesion, formInicio, setFormInicio, menu, setMenu}){
 
     return (<>
-        <Navbar className="bg-slate-600 bg-white">
+        <Navbar className="bg-slate-600 bg-white border-b-2 shadow-xl">
             <Container>
             <Navbar.Brand className="flex">
                 <img

@@ -10,7 +10,7 @@ export default {
       current: 'currentColor',
       'white': '#ffffff',
       'black': {
-        300: '#00000',
+        300: '#000000',
         200: '#212226',
         100: '#000000b3',
       },
