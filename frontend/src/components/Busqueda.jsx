@@ -33,9 +33,6 @@ export function Busqueda({resultado, setResultado, cargar, setCargar}) {
         fetchData();
     }, [valor, categoria]);
 
-    useEffect( () => {
-        !resultado ? setCargar(true) : resultado.length===0 ? setCargar(false) : setCargar(false)
-    }, [resultado])
 
     //enviamos al backend
     async function servidor(){
@@ -63,7 +60,7 @@ export function Busqueda({resultado, setResultado, cargar, setCargar}) {
 
                 <div className={seleccionar ? "flex flex-wrap justify-center" : "hidden"}>
                     {TodasCategorias.map((c, i) => ( 
-                        <label id={i} className={`m-1 p-1 rounded-3xl ${categoria.includes(c) ? 'bg-orange-300 px-3 text-white' : 'border-1 border-black-300 bg-white px-3'}`} > 
+                        <label key={i} className={`m-1 p-1 rounded-3xl ${categoria.includes(c) ? 'bg-orange-300 px-3 text-white' : 'border-1 border-black-300 bg-white px-3'}`} > 
                             <input type="checkbox" name="categoria" value={c} checked={categoria.includes(c)}  onChange={(e) => {e.target.checked ? setCategoria([...categoria, e.target.value]) : setCategoria(categoria.filter(o => o !== e.target.value))}} className="hidden"></input> 
                             <span className="text-lg">{c}</span> 
                         </label> 

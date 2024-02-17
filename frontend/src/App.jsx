@@ -28,7 +28,7 @@ function App() {
       <main className='min-h-[640px] sm:min-h-96'>
         {sesion===0 ? 
           <Landing formInicio={formInicio} setFormInicio={setFormInicio}/>
-        : <> <Inicio/> </>}
+        : <> <Inicio sesion={sesion}/> </>}
 
         {favoritosMostrar ? <h2>FAVORITO</h2> : <></>}
         {inicioMostrar ? <h2>INICIO</h2> : <></>}

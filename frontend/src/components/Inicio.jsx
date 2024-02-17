@@ -1,10 +1,16 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Busqueda } from "./Busqueda"
 import { RenderizarProductos } from "./renderizado/R_producto"
 
-export function Inicio() {
+export function Inicio({sesion}) {
     const [resultado, setResultado] = useState()
     const [cargar, setCargar] = useState(false)
+
+    useEffect( () => {
+        if (resultado === undefined) {
+            setCargar(true)
+        }
+    }, [resultado]);
 
     return(<>
         <Busqueda resultado={resultado} setResultado={setResultado} cargar={cargar} setCargar={setCargar}/>
@@ -16,7 +22,7 @@ export function Inicio() {
             </>
         ) : (
             <>
-                <RenderizarProductos resultado={resultado}/>
+                <RenderizarProductos resultado={resultado} sesion={sesion}/>
             </>
         )}
     </>)
