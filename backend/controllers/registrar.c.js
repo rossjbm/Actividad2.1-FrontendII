@@ -35,7 +35,7 @@ class registrarControllers {
             try {
                 const verificar = await usuariosModel.find({user: user})
                 if (verificar[0]) {
-                    return res.status('200').json({"alerta":"Ese nombre de usuario ya existe. Utiliza otro diferente"})
+                    return res.status('409').json({"alerta":"Ese nombre de usuario ya existe. Utiliza otro diferente"})
                 }
             } catch (error) {
                 console.log("Hubo algún error verificar usuario", error);

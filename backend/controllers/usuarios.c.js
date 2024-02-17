@@ -1,6 +1,7 @@
 const usuariosModel = require("../models/usuarios.m")
 const validator = require("validator") 
 const bcryptjs = require("bcryptjs")
+const JWT = require("jsonwebtoken")
 
 class usuariosControllers {
     async listar(req, res, next) {
@@ -75,6 +76,49 @@ class usuariosControllers {
             res.status('404').json({"error":error});
         }
 
+    }
+    async iniciar(req, res, next){
+        var user = req.body.user;
+        var password = req.body.password;
+        console.log(req.body);
+        try {
+            const datos = await usuariosModel.find();
+            if (!datos) {
+                throw["404","No hay usuarios registrados"]
+            }
+            const usuario = await usuariosModel.find({user: user})
+            if (!usuario[0]) {
+                throw ["404","Usuario o contraseña incorrecto"]
+            }
+            console.log(usuario[0].contrasena, " y ",password);
+            console.log(usuario);
+            // bcrypt
+            const verificarPassword = await bcryptjs.compare(usuario[0].contrasena, password)
+            if (verificarPassword) {
+                throw ["404","Usuario o contraseña incorrecto"]
+            }
+            // devolver un token
+            const token = JWT.sign(
+                {
+                    name: usuario[0].user,
+                    rol:usuario[0].rol
+                },process.env.secreto,{
+                    expiresIn:"1m"
+                }
+            )
+            res.status(200).json({token})
+            
+        } catch (error) {
+            if (error.length) {
+                console.log("Hubo algún error: ", error[1]); // vemos error por consola
+                res.status(error[0]).json({"error":error[1]}) //estado
+            }else{
+                console.log("Tenemos error: ",error);
+                res.status("404").send(error)
+            }
+        }
+        
+        
     }
 }
 

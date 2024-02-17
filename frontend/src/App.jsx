@@ -8,7 +8,7 @@ import { Footer } from './components/Footer';
 import { Inicio } from './components/Inicio';
 
 function App() {
-  const [sesion, setSesion] = useState(1);
+  const [sesion, setSesion] = useState(0);
   const [menu, setMenu] = useState(false)
   const [formInicio, setFormInicio] = useState(true);
   //secciones

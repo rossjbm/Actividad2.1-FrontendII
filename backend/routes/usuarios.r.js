@@ -5,6 +5,7 @@ const usuariosControllers = require("../controllers/usuarios.c")
 
 /* GET users listing. */
 router.get('/', usuariosControllers.listar);
+router.post('/', usuariosControllers.iniciar);
 router.put('/edit', usuariosControllers.editar);
 router.delete('/delete', usuariosControllers.eliminar);
 
