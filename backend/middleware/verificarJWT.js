@@ -3,7 +3,7 @@ const JWT = require("jsonwebtoken")
 class seguridad{
     async JWT(req, res, next){   
         const authHeader = req.headers['authorization'];
-        const token = authHeader && authHeader.split(' ')[1];
+        const token = await authHeader && authHeader.split(' ')[1];
         console.log('este el token: ',token);
         try {
             if (token == "null") {
@@ -16,7 +16,7 @@ class seguridad{
             if (error.name == "TokenExpiredError" || error== "null") {
                 res.status(401).json({'error':'debe iniciar sesión'})
             }else{
-                console.log('generico');
+                console.log('generico1');
                 res.status(404).json({'error':error})
             }
         }

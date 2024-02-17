@@ -72,6 +72,10 @@ class productosControllers {
         }
 
     }
+    async comprar(req, res, next){
+        console.log('deberia');
+        console.log('el body',req.body)
+    }
 }
 
 module.exports = new productosControllers();
