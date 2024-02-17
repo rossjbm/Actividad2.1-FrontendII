@@ -24,6 +24,10 @@ export default {
         200: '#FBBA94',
         100: '#fddfcd',
       },
+      'botones': {
+        100: '#FFD10A',
+        200: '#FF0A0A',
+      }
     },
     extend: {
       backgroundImage: {

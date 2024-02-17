@@ -7,7 +7,7 @@ export function Paginacion({documentos, Renderizado, limite, sesion, setDetalleP
     var maxPagina;
 
     if (documentos && documentos.length === 0) { 
-        return(<p className="text-center text-2xl text-black-300">No Se Encontraron Resultados</p>) 
+        return(<p className="text-center text-2xl text-black-300">No Se Hay Resultados</p>) 
     } else if (documentos) {
         maxPagina = Math.ceil(documentos.length / limite);
         

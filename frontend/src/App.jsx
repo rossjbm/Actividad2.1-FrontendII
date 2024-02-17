@@ -4,6 +4,7 @@ import { Header } from "./components/Header";
 import { Landing } from './components/Landing';
 import { Footer } from './components/Footer';
 import { Inicio } from './components/Inicio';
+import { Usuarios } from './components/Usuarios';
 
 function App() {
   const [sesion, setSesion] = useState(2);
@@ -31,7 +32,7 @@ function App() {
         : inicioMostrar? <> <Inicio sesion={sesion} setSesion={setSesion}/> </> 
         : favoritosMostrar? <h2>FAVORITO</h2>
         : perfilMostrar? <h2>PERFIL</h2>
-        : usuariosMostrar? <h2>USUARIOS</h2>
+        : usuariosMostrar? <Usuarios/>
         : inventarioMostrar? <h2>INVENTARIO</h2>
         : <></>}
 
