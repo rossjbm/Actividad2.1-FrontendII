@@ -28,6 +28,6 @@ export function Landing({formInicio , setFormInicio, setSesion}) {
         {/* formularios de inicio de sesion y registro */}
         {formInicio ? 
             <FormIniciar setFormInicio={setFormInicio} setSesion={setSesion} setModalShow={setModalShow} setError={setError}/>
-        : <FormRegistro setFormInicio={setFormInicio} /> }
+        : <FormRegistro setFormInicio={setFormInicio} setModalShow={setModalShow} setError={setError} /> }
     </>)
 }

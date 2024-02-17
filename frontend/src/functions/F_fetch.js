@@ -8,14 +8,18 @@ export async function EnvioRegistro(registro) {
     })
     .then(response => response.json())
     .then(response => {
-        if (response.alerta) {
-            console.log(response.alerta)
+        if (response.error) {
+            throw response.error
         }
         if (response.exito) {
-            console.log(response.exito)
+            
+            return response.exito
         }
     })
-    .catch ((error) => console.log("Error:", error)) 
+    .catch ((error) => {
+        console.log("Error:", error)
+        throw error
+    }) 
 }
 
 export async function Listar(url) {

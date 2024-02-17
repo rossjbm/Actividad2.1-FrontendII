@@ -6,7 +6,7 @@ import { mostrarSeccion } from '../../functions/F_mostrar';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 
-export function FormRegistro({setFormInicio}) {
+export function FormRegistro({setFormInicio, setModalShow, setError}) {
     const [registro, setRegistro] = useState({
         nombre: "",
         apellido:"",
@@ -24,7 +24,15 @@ export function FormRegistro({setFormInicio}) {
     const enviar = async (e) => {
         e.preventDefault();
         console.log(registro);
-        await EnvioRegistro(registro)
+        try {
+            const enviado = await EnvioRegistro(registro)
+            console.log(enviado);
+            setFormInicio(true)
+        } catch (error) {
+            setError(error)
+            setModalShow(true)
+        }
+        
     };
     
     return (<>
