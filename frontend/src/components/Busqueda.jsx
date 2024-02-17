@@ -27,7 +27,7 @@ export function Busqueda({resultado, setResultado, cargar, setCargar}) {
                 };
             } else {
                 const documentos = await servidor();
-                setResultado(documentos);
+                setResultado(documentos); 
             }
         }
         fetchData();
