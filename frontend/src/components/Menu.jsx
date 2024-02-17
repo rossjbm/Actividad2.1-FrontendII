@@ -1,4 +1,4 @@
-import { B_salir } from "./botones/B_salir"
+import { B_salir } from "./botones/Botones"
 import {S_cliente , S_admin} from ".././functions/F_secciones"
 
 

@@ -40,7 +40,6 @@ export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar}
 
     //enviamos al backend
     async function servidor(){
-        console.log("estamos en mandar al backend. mostrar resultados")
         // try {
         //     const documentos = await ListarProductos(setSesion)
         //     setResultado(documentos)
@@ -84,7 +83,6 @@ export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar}
     //   }
 
     async function handleChange() {
-        console.log(resultado)
         console.log("buscar")
         const documentos = await servidor()
         const resp = Buscar(valor, categoria, documentos)
@@ -92,7 +90,6 @@ export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar}
     }
 
     return(<>
-    {console.log(resultado)}
         <div className="flex flex-col justify-between items-center gap-10 my-12">
             <input type="text" placeholder="Ingresa nombre o descripción..." value={valor} onChange={(e) => {setValor(e.target.value)}} className="w-11/12 h-14 rounded bg-orange-200 px-3 focus:outline-none focus:border-2 focus:border-orange-300 focus:bg-white text-2xl placeholder:text-black-100 shadow-2xl"></input>
 

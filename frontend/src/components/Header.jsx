@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { B_inicio } from "./botones/B_inicio";
-import { B_menu } from "./botones/B_menu";
+import { B_menu } from "./botones/Botones";
 
 //estilos
 import Container from 'react-bootstrap/Container';
@@ -31,7 +31,7 @@ export function Header({sesion, formInicio, setFormInicio, menu, setMenu}){
                         </>
                         // se ha iniciado seción
                         : <>
-                            <B_menu menu={menu} setMenu={setMenu}/>
+                            <B_menu estado={setMenu}/>
                         </>
                     }
                 </div>

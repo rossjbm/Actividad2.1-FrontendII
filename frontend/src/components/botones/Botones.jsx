@@ -18,8 +18,8 @@ export function B_salir({estado}) {
 //     </>)
 // }
 
-// export function B_menu({setMenu}) {
-//     return (<>
-//         <button onClick={() => {setMenu(true); console.log("menuu")}} ><IoMenuOutline className="text-4xl m-0 p-0"/></button>
-//     </>)
-// }
+export function B_menu({estado}) {
+    return (<>
+        <button onClick={() => {estado(true)}} ><IoMenuOutline className="text-4xl m-0 p-0"/></button>
+    </>)
+}
