@@ -18,9 +18,9 @@ export async function EnvioRegistro(registro) {
     .catch ((error) => console.log("Error:", error)) 
 }
 
-export async function ListarProductos() {
+export async function Listar(url) {
     const token = await revisarJWT()
-    return fetch('http://localhost:3000/productos', {
+    return fetch(`http://localhost:3000/${url}`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
                   'Authorization': 'Bearer ' + token

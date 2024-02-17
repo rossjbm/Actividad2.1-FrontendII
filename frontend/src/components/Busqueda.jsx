@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { mostrarSeccion } from "../functions/F_mostrar";
-import { ListarProductos } from "../functions/F_fetch";
+import { Listar } from "../functions/F_fetch";
 import { Buscar } from "../functions/F_busqueda";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -41,7 +41,7 @@ export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar}
     //enviamos al backend
     async function servidor(){
         // try {
-        //     const documentos = await ListarProductos(setSesion)
+        //     const documentos = await Listar('productos',setSesion)
         //     setResultado(documentos)
         //     return documentos
         // } catch (error) {
@@ -53,7 +53,7 @@ export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar}
         //         console.log(error);
         //     }
         // }
-        const documentos = await ListarProductos(setSesion)
+        const documentos = await Listar('productos',setSesion)
         setResultado(documentos)
         return documentos
     }
