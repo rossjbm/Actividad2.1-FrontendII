@@ -25,7 +25,7 @@ export function RenderizarProductos({ documentosPaginados, sesion, setDetallePMo
                 </div>
                 <div className='flex justify-center mt-3'>
                     {sesion===1?
-                        <button className='w-full h-14 bg-orange-300 text-white text-2xl'>C O M P R A R</button>
+                        <button className='w-full h-14 bg-orange-300 hover:bg-orange-500 hover:scale-102 duration-200 border-solid border-2 rounded-md border-black-300 text-white text-2xl'>C O M P R A R</button>
                     :   <button className='w-full h-14 bg-orange-300 text-white text-2xl'>E D I T A R</button>
                 }
                 </div>

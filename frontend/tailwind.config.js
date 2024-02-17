@@ -32,6 +32,9 @@ export default {
     extend: {
       backgroundImage: {
         'fondoLocal': "url('/src/assets/local.jpeg')",
+      },
+      scale:{
+        '102':'1.02'
       }
     },
   },

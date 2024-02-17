@@ -104,10 +104,10 @@ class usuariosControllers {
                     name: usuario[0].user,
                     rol:usuario[0].rol
                 },process.env.secreto,{
-                    expiresIn:"1m"
+                    expiresIn:"10m"
                 }
             )
-            res.status(200).json({token})
+            res.status(200).json({token,"rol":usuario[0].rol})
             
         } catch (error) {
             if (error.length) {

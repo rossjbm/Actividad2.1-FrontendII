@@ -35,7 +35,11 @@ export function FormIniciar({setFormInicio, setSesion, setModalShow, setError}) 
             }
             // Guardar el token en el almacenamiento local
             localStorage.setItem('token', data.token);
-            setSesion(1)
+            if (data.rol == 'admin') {
+                setSesion(2)
+            }else{
+                setSesion(1)
+            }
         })
         .catch((error) => {
             console.error('Error:', error);

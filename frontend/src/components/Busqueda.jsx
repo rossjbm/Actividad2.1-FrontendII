@@ -55,9 +55,10 @@ export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar}
             if (error == "debe iniciar sesión") {
                 setError('Debes iniciar sesión :D')
                 setModalShow(true)
-                
             }else{
                 console.log(error);
+                setError(error)
+                setModalShow(true)
             }
         }
         const documentos = await Listar('productos',setSesion)
