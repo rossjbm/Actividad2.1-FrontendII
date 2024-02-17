@@ -38,7 +38,7 @@ export function Usuarios() {
         ) : (
             <>
                 <h1 className="text-center my-14 text-4xl">Clientes Registrados</h1>
-                <Paginacion documentos={resultado} Renderizado={RenderizarUsuarios} limite={10} />
+                <Paginacion documentos={resultado} Renderizado={RenderizarUsuarios} limite={10} setResultado={setResultado} />
             </>
         )}
     </>)

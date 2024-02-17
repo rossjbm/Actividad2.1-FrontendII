@@ -2,7 +2,7 @@ import { Eliminar } from "../crud/Eliminar";
 import { FaUserShield } from "react-icons/fa";
 import { FaUserEdit } from "react-icons/fa";
 
-export function RenderizarUsuarios({ documentosPaginados}){
+export function RenderizarUsuarios({ documentosPaginados , documentos, setResultado}){
     
     return (<div className="py-4 px-2 grid grid-cols-1 h-full w-full place-content-center place-items-center gap-16 sm:grid-cols-2">
         {documentosPaginados.map((usuario, i) => (
@@ -24,8 +24,7 @@ export function RenderizarUsuarios({ documentosPaginados}){
                 </div>
                 <div className="flex justify-around w-full gap-3">
                     <button onClick={() => {console.log('editar')}} className="bg-botones-100 w-full h-12 flex justify-center items-center"><FaUserEdit className="text-4xl "/></button>
-                    <Eliminar id={usuario._id} />
-                    {console.log(usuario._id)}
+                    <Eliminar id={usuario._id} setResultado={setResultado} documentos={documentos}/>
                 </div>
             </section>
         ))}

@@ -49,3 +49,21 @@ export async function Listar(url) {
         throw ("Error:", error)
     }) 
 }
+
+export async function Borrar(url, id) {
+    return fetch(`http://localhost:3000/${url}/delete`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json',},
+        body: JSON.stringify({id:id})
+    })
+    .then(response => response.json())
+    .then(response => {
+        if (response.exito) {
+            return response.exito
+        }
+    })
+    .catch ((error) => {
+        console.log("Error:", error)
+        throw error
+    }) 
+}
