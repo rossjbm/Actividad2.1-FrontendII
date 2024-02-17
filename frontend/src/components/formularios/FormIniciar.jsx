@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import { revisarJWT } from '../../functions/F_revisarJWT';
 
-export function FormIniciar() {
+export function FormIniciar({setSesion}) {
     const [iniciar, setIniciar] = useState({
         user: '',
         password: '',
@@ -32,7 +32,7 @@ export function FormIniciar() {
             console.log(data);
             // Guardar el token en el almacenamiento local
             localStorage.setItem('token', data.token);
-            revisarJWT()
+            setSesion(1)
         })
         .catch((error) => {
             console.error('Error:', error);

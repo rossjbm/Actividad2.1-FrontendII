@@ -8,7 +8,7 @@ import { Footer } from './components/Footer';
 import { Inicio } from './components/Inicio';
 
 function App() {
-  const [sesion, setSesion] = useState(0);
+  const [sesion, setSesion] = useState(1);
   const [menu, setMenu] = useState(false)
   const [formInicio, setFormInicio] = useState(true);
   //secciones
@@ -27,8 +27,8 @@ function App() {
 
       <main className='min-h-[640px] sm:min-h-96'>
         {sesion===0 ? 
-          <Landing formInicio={formInicio} setFormInicio={setFormInicio}/>
-        : <> <Inicio sesion={sesion}/> </>}
+          <Landing setSesion={setSesion} formInicio={formInicio} setFormInicio={setFormInicio}/>
+        : <> <Inicio sesion={sesion} setSesion={setSesion}/> </>}
 
         {favoritosMostrar ? <h2>FAVORITO</h2> : <></>}
         {inicioMostrar ? <h2>INICIO</h2> : <></>}

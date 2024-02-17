@@ -1,3 +1,4 @@
+import { revisarJWT } from "./F_revisarJWT"
 
 export async function EnvioRegistro({registro}) {
     return fetch('http://localhost:3000/registrar', {
@@ -18,9 +19,12 @@ export async function EnvioRegistro({registro}) {
 }
 
 export async function ListarProductos() {
+    const token = await revisarJWT()
     return fetch('http://localhost:3000/productos', {
         method: 'GET',
-        headers: {'Content-Type': 'application/json',}
+        headers: {'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + token
+                 }
     })
     .then(response => response.json())
     .then(response => {
@@ -30,7 +34,14 @@ export async function ListarProductos() {
         if (response.exito) {
             console.log(response.exito)
         }
-        return response;
+        if (response.error) {
+            console.log('error', response.error);
+            throw response.error
+        }else{
+            return response;
+        } 
     })
-    .catch ((error) => console.log("Error:", error)) 
+    .catch ((error) => {
+        throw ("Error:", error)
+    }) 
 }

@@ -2,13 +2,17 @@ import { useState, useEffect } from "react"
 import { mostrarSeccion } from "../functions/F_mostrar";
 import { ListarProductos } from "../functions/F_fetch";
 import { Buscar } from "../functions/F_busqueda";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 const TodasCategorias = ["Nevera", "Lavadora", "Aire Acondicionado", "Microondas", "Licuadora", "Televisor", "Congelador"]
 
-export function Busqueda({resultado, setResultado, cargar, setCargar}) {
+export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar}) {
     const [categoria, setCategoria] = useState([]);
     const [valor, setValor] = useState("");
     const [seleccionar, setSeleccionar] = useState(false);
+    const [error, setError] = useState("");
+    const [modalShow, setModalShow] = useState(false);;
 
     useEffect( () => {
         async function fetchData() {
@@ -37,10 +41,45 @@ export function Busqueda({resultado, setResultado, cargar, setCargar}) {
     //enviamos al backend
     async function servidor(){
         console.log("estamos en mandar al backend. mostrar resultados")
-        const documentos = await ListarProductos()
-        setResultado(documentos)
-        return documentos
+        try {
+            const documentos = await ListarProductos(setSesion)
+            setResultado(documentos)
+            return documentos
+        } catch (error) {
+            if (error == "debe iniciar sesión") {
+                setError('Debes iniciar sesión :D')
+                setModalShow(true)
+                
+            }else{
+                console.log(error);
+            }
+        }
+        
     }
+
+    function MyVerticallyCenteredModal(props) {
+        return (
+          <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+          >
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-vcenter">
+                Alerta
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <h4>{error}</h4>
+              
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="warning" onClick={props.onHide}>Entendido</Button>
+            </Modal.Footer>
+          </Modal>
+        );
+      }
 
     async function handleChange() {
         console.log(resultado)
@@ -68,5 +107,14 @@ export function Busqueda({resultado, setResultado, cargar, setCargar}) {
                 </div>
             </div>
         </div>
+        <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => {
+            setModalShow(false);
+            setError('');
+            setSesion(0);
+        }}
+      />
+
     </>)
 }

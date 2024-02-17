@@ -2,7 +2,7 @@ import { FormIniciar } from "./formularios/FormIniciar";
 import { FormRegistro } from "./formularios/FormRegistro";
 
 
-export function Landing({formInicio , setFormInicio}) {
+export function Landing({formInicio , setFormInicio, setSesion}) {
 
     return (<>
         <div className="bg-fondoLocal bg-cover bg-center h-52 w-full" >
@@ -13,7 +13,7 @@ export function Landing({formInicio , setFormInicio}) {
         </div>
         {/* formularios de inicio de sesion y registro */}
         {formInicio ? 
-            <FormIniciar/>
+            <FormIniciar setSesion={setSesion}/>
         : <FormRegistro/> }
     </>)
 }
