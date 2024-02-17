@@ -1,6 +1,6 @@
 import { revisarJWT } from "../../functions/F_revisarJWT";
 
-export function ComprarButton({producto_id}) {
+export function ComprarButton({setError, setModalShow, producto_id}) {
 
     async function ComprarFetch(id) {
         console.log('ide del producto: ',id);
@@ -26,6 +26,8 @@ export function ComprarButton({producto_id}) {
         })
         .catch ((error) => {
             console.log("Error:", error)
+            setModalShow(true)
+            setError(error)
             throw error
         }) 
 

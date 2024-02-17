@@ -75,6 +75,9 @@ class productosControllers {
     async comprar(req, res, next){
         console.log('deberia');
         console.log('el body',req.body)
+        var _id = req.body;
+        var dato = await productosModel.find({_id:_id});
+        console.log(dato);
     }
 }
 
