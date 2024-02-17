@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-export function Paginacion({documentos, Renderizado, limite, sesion, setDetallePMostrar, setDetalleP }) {
+export function Paginacion({documentos, Renderizado, limite, sesion, setDetallePMostrar, setDetalleP , setResultado}) {
     const [paginaActual, setPaginaActual] = useState(1);
     var maxPagina;
 
@@ -26,7 +26,7 @@ export function Paginacion({documentos, Renderizado, limite, sesion, setDetalleP
             <div>
                 {console.log('estamos en pag', paginaActual)}
 
-                <Renderizado documentosPaginados={documentosPaginados} sesion={sesion} setDetallePMostrar={setDetallePMostrar} setDetalleP={setDetalleP}/>
+                <Renderizado documentosPaginados={documentosPaginados} sesion={sesion} setDetallePMostrar={setDetallePMostrar} setDetalleP={setDetalleP} setResultado={setResultado} documentos={documentos} />
 
                 <div className="flex justify-center gap-5 my-5">
                     <button onClick={anteriorPagina} value={paginaActual - 1} className={paginaActual=== 1 ? 'text-3xl bg-grey-100 p-3 rounded-full' : 'text-3xl bg-orange-200 p-3 rounded-full'}><FaArrowLeftLong/></button>

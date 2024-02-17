@@ -1,11 +1,10 @@
-import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 export function AlertaConfirmar({handleClose, handleOnHide, handleShow, show}) {
     return (<Modal
             show={show}
-            onHide={handleOnHide}
+            onHide={handleClose}
             backdrop="static"
             keyboard={false}
         >
