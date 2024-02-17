@@ -103,7 +103,7 @@ class usuariosControllers {
                     name: usuario[0].user,
                     rol:usuario[0].rol
                 },process.env.secreto,{
-                    expiresIn:"20m"
+                    expiresIn:"1m"
                 }
             )
             res.status(200).json({token})

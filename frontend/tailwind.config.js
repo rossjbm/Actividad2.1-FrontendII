@@ -19,8 +19,10 @@ export default {
         100: '#C0B7B0',
       },
       'orange':{
+        500: '#8b3806',
         300: '#F38749',
         200: '#FBBA94',
+        100: '#fddfcd',
       },
     },
     extend: {

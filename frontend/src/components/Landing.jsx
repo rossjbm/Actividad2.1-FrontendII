@@ -1,8 +1,17 @@
+import { useState } from "react";
 import { FormIniciar } from "./formularios/FormIniciar";
 import { FormRegistro } from "./formularios/FormRegistro";
-
+import {MyVerticallyCenteredModal} from "./global/MensajeAlert"
 
 export function Landing({formInicio , setFormInicio, setSesion}) {
+
+    const handleHide = () => {
+        setModalShow(false);
+        setError('');
+        setSesion(0);
+    };
+    const [error, setError] = useState("");
+    const [modalShow, setModalShow] = useState(false);
 
     return (<>
         <div className="bg-fondoLocal bg-cover bg-center h-52 w-full" >
@@ -11,9 +20,14 @@ export function Landing({formInicio , setFormInicio, setSesion}) {
                 <p className="text-white ">La Mejor Tienda Online de Electrodomésticos</p>
             </div>
         </div>
+        <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={handleHide}
+        error={error}
+        />
         {/* formularios de inicio de sesion y registro */}
         {formInicio ? 
-            <FormIniciar setSesion={setSesion}/>
-        : <FormRegistro/> }
+            <FormIniciar setFormInicio={setFormInicio} setSesion={setSesion} setModalShow={setModalShow} setError={setError}/>
+        : <FormRegistro setFormInicio={setFormInicio} /> }
     </>)
 }

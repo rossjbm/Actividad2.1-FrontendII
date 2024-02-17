@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import { revisarJWT } from '../../functions/F_revisarJWT';
 
-export function FormIniciar({setSesion}) {
+export function FormIniciar({setFormInicio, setSesion, setModalShow, setError}) {
     const [iniciar, setIniciar] = useState({
         user: '',
         password: '',
@@ -30,12 +30,18 @@ export function FormIniciar({setSesion}) {
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            if (data.error) {
+                throw data.error
+            }
             // Guardar el token en el almacenamiento local
             localStorage.setItem('token', data.token);
             setSesion(1)
         })
         .catch((error) => {
             console.error('Error:', error);
+            setError(error)
+            setModalShow(true)
+
         });
     };
     
@@ -51,6 +57,7 @@ export function FormIniciar({setSesion}) {
             <Form.Group>
                 <Form.Check type='checkbox' label='Recordar este dispositivo' checked={iniciar.recordar} onChange={handleChange} name='recordar'></Form.Check>
             </Form.Group>
+            <span className='cursor-pointer' onClick={(e)=>{e.preventDefault(), setFormInicio(false)}}>No estas registro? <span className='cursor-pointer hover:text-orange-500' onClick={(e)=>{e.preventDefault(), setFormInicio(false)}}>Regístrate ya</span></span>
             <Form.Group className='flex justify-center mb-6 mt-10' >
                 <Button type="submit" onClick={enviar} className='bg-black-200 text-black-300 pb-4 rounded w-24 h-10 text-xl'>Iniciar</Button>
             </Form.Group>

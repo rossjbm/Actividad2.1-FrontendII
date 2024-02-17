@@ -6,7 +6,7 @@ import { mostrarSeccion } from '../../functions/F_mostrar';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 
-export function FormRegistro() {
+export function FormRegistro({setFormInicio}) {
     const [registro, setRegistro] = useState({
         nombre: "",
         apellido:"",
@@ -54,6 +54,7 @@ export function FormRegistro() {
             <FloatingLabel controlId="confirmar_p" label="Confirmar Contraseña" className="mb-5">
                 <Form.Control type="password" placeholder="Password" name='confirmar_p' value={registro.confirmar_p} onChange={handleChange}/>
             </FloatingLabel>
+            <span className='cursor-pointer' onClick={(e)=>{e.preventDefault(), setFormInicio(true)}}> Ya tienes una cuenta? <span className='cursor-pointer hover:text-orange-500' onClick={(e)=>{e.preventDefault(), setFormInicio(true)}}>Inicia sesión aquí</span></span>
 
             <div className='text-center'>
                 <button className="text-sm " onClick={(e) => {mostrarSeccion(e, admin, setAdmin)}}>¿Serás administrador? Presiona aquí</button>

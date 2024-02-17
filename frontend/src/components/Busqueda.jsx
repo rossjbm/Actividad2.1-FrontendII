@@ -2,8 +2,8 @@ import { useState, useEffect } from "react"
 import { mostrarSeccion } from "../functions/F_mostrar";
 import { Listar } from "../functions/F_fetch";
 import { Buscar } from "../functions/F_busqueda";
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+
+import { MyVerticallyCenteredModal } from "./global/MensajeAlert";
 
 const TodasCategorias = ["Nevera", "Lavadora", "Aire Acondicionado", "Microondas", "Licuadora", "Televisor", "Congelador"]
 
@@ -37,50 +37,34 @@ export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar}
         fetchData();
     }, [valor, categoria]);
 
+    //esconder alerta
+    const handleHide = () => {
+        setModalShow(false);
+        setError('');
+        setSesion(0);
+    };
+
 
     //enviamos al backend
     async function servidor(){
-        // try {
-        //     const documentos = await Listar('productos',setSesion)
-        //     setResultado(documentos)
-        //     return documentos
-        // } catch (error) {
-        //     if (error == "debe iniciar sesión") {
-        //         setError('Debes iniciar sesión :D')
-        //         setModalShow(true)
+        try {
+            const documentos = await Listar('productos',setSesion)
+            setResultado(documentos)
+            return documentos
+        } catch (error) {
+            if (error == "debe iniciar sesión") {
+                setError('Debes iniciar sesión :D')
+                setModalShow(true)
                 
-        //     }else{
-        //         console.log(error);
-        //     }
-        // }
+            }else{
+                console.log(error);
+            }
+        }
         const documentos = await Listar('productos',setSesion)
         setResultado(documentos)
         return documentos
     }
 
-    // function MyVerticallyCenteredModal(props) {
-    //     return (
-    //       <Modal
-    //         {...props}
-    //         size="lg"
-    //         aria-labelledby="contained-modal-title-vcenter"
-    //         centered
-    //       >
-    //         <Modal.Header closeButton>
-    //           <Modal.Title id="contained-modal-title-vcenter">
-    //             Alerta
-    //           </Modal.Title>
-    //         </Modal.Header>
-    //         <Modal.Body>
-    //           <h4>{error}</h4>
-              
-    //         </Modal.Body>
-    //         <Modal.Footer>
-    //           <Button variant="warning" onClick={props.onHide}>Entendido</Button>
-    //         </Modal.Footer>
-    //       </Modal>
-    //     );
-    //   }
 
     async function handleChange() {
         console.log("buscar")
@@ -106,14 +90,11 @@ export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar}
                 </div>
             </div>
         </div>
-        {/* <MyVerticallyCenteredModal
+        <MyVerticallyCenteredModal
         show={modalShow}
-        onHide={() => {
-            setModalShow(false);
-            setError('');
-            setSesion(0);
-        }}
-        /> */}
+        onHide={handleHide}
+        error={error}
+        />
 
     </>)
 }
