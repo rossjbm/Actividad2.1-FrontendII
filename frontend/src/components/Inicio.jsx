@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react"
 import { Busqueda } from "./Busqueda"
+import { Paginacion } from "./global/Paginacion"
 import { RenderizarProductos } from "./renderizado/R_producto"
+import { RenderizarDetalles } from "./renderizado/R_detalle"
 
 export function Inicio({sesion, setSesion}) {
     const [resultado, setResultado] = useState()
     const [cargar, setCargar] = useState(false)
+    const [detallePMostrar, setDetallePMostrar] = useState(false)
+    const [detalleP, setDetalleP] = useState()
 
     useEffect( () => {
         if (resultado === undefined) {
@@ -22,7 +26,9 @@ export function Inicio({sesion, setSesion}) {
             </>
         ) : (
             <>
-                <RenderizarProductos resultado={resultado} sesion={sesion}/>
+                <Paginacion documentos={resultado} Renderizado={RenderizarProductos} limite={8} sesion={sesion} setDetallePMostrar={setDetallePMostrar} setDetalleP={setDetalleP}/>
+                <RenderizarDetalles detallePMostrar={detallePMostrar} detalleP={detalleP} setDetallePMostrar={setDetallePMostrar}/>
+                {/* <RenderizarProductos resultado={resultado} sesion={sesion} setDetallePMostrar={setDetallePMostrar} setDetalleP={setDetalleP}/> */}
             </>
         )}
     </>)

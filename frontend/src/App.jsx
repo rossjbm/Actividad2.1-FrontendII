@@ -12,7 +12,7 @@ function App() {
   const [menu, setMenu] = useState(false)
   const [formInicio, setFormInicio] = useState(true);
   //secciones
-  const [inicioMostrar, setInicioMostrar] = useState(false)
+  const [inicioMostrar, setInicioMostrar] = useState(true)
   const [favoritosMostrar, setFavoritosMostrar] = useState(false)
   const [perfilMostrar, setPerfilMostrar] = useState(false)
 
@@ -28,7 +28,7 @@ function App() {
       <main className='min-h-[640px] sm:min-h-96'>
         {sesion===0 ? 
           <Landing setSesion={setSesion} formInicio={formInicio} setFormInicio={setFormInicio}/>
-        : <> <Inicio sesion={sesion} setSesion={setSesion}/> </>}
+        : inicioMostrar? <> <Inicio sesion={sesion} setSesion={setSesion}/> </> : <></>}
 
         {favoritosMostrar ? <h2>FAVORITO</h2> : <></>}
         {inicioMostrar ? <h2>INICIO</h2> : <></>}

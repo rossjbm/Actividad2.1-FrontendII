@@ -8,13 +8,13 @@ import Form from 'react-bootstrap/Form';
 
 export function FormRegistro() {
     const [registro, setRegistro] = useState({
-        nombre: '',
-        apellido:'',
-        user: '',
-        password: '',
-        confirmar_p: '',
-        correo: '',
-        clave: ''
+        nombre: "",
+        apellido:"",
+        user: "",
+        password: "",
+        confirmar_p: "",
+        correo: "",
+        clave: ""
     });
     const [admin, setAdmin] = useState(false)
 

@@ -9,7 +9,8 @@ class registrarControllers {
 
     async agregar(req, res, next) {
         const {user, nombre, apellido, password, confirmar_p, correo, clave} = req.body
-
+        console.log('en registro')
+        console.log(user, nombre, apellido, password, confirmar_p, correo, clave)
         try {
             //Comparaciones
             if (!user || !nombre || !apellido || !password || !confirmar_p || !correo) {

@@ -1,6 +1,6 @@
 import { revisarJWT } from "./F_revisarJWT"
 
-export async function EnvioRegistro({registro}) {
+export async function EnvioRegistro(registro) {
     return fetch('http://localhost:3000/registrar', {
         method: 'POST',
         headers: {'Content-Type': 'application/json',},
