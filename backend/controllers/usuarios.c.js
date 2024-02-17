@@ -93,8 +93,9 @@ class usuariosControllers {
             console.log(usuario[0].contrasena, " y ",password);
             console.log(usuario);
             // bcrypt
-            const verificarPassword = await bcryptjs.compare(usuario[0].contrasena, password)
-            if (verificarPassword) {
+            const verificarPassword = await bcryptjs.compare(password, usuario[0].contrasena)
+            if (!verificarPassword) {
+                console.log('error en veri: ', verificarPassword);
                 throw ["404","Usuario o contraseña incorrecto"]
             }
             // devolver un token

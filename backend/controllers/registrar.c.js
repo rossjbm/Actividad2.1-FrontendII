@@ -14,20 +14,20 @@ class registrarControllers {
         try {
             //Comparaciones
             if (!user || !nombre || !apellido || !password || !confirmar_p || !correo) {
-                return res.status('200').json({"alerta":"Debes ingresar todos los datos solicitados"}) //estado
+                return res.status('400').json({"error":"Debes ingresar todos los datos solicitados"}) //estado
             }
             if (password != confirmar_p) {
-                return res.status('200').json({"alerta":"Las contraseñas no coinciden. Ingresarla nuevamente"})
+                return res.status('422').json({"error":"Las contraseñas no coinciden. Ingresarla nuevamente"})
             }
             if (!validator.isEmail(correo)) {
-                return res.status('200').json({"alerta":"El correo no es válido. Verifica e ingresa nuevamente"})
+                return res.status('400').json({"error":"El correo no es válido. Verifica e ingresa nuevamente"})
             }
 
             //Verificar existencia
             try {
                 const verificar = await usuariosModel.find({correo: correo})
                 if (verificar[0]) {
-                    return res.status('200').json({"alerta":"El correo ingresado ya tiene una cuenta registrada"})
+                    return res.status('409').json({"error":"El correo ingresado ya tiene una cuenta registrada"})
                 }
             } catch (error) {
                 console.log("Hubo algún error verificar correo", error);
@@ -36,7 +36,7 @@ class registrarControllers {
             try {
                 const verificar = await usuariosModel.find({user: user})
                 if (verificar[0]) {
-                    return res.status('409').json({"alerta":"Ese nombre de usuario ya existe. Utiliza otro diferente"})
+                    return res.status('409').json({"error":"Ese nombre de usuario ya existe. Utiliza otro diferente"})
                 }
             } catch (error) {
                 console.log("Hubo algún error verificar usuario", error);
@@ -49,7 +49,7 @@ class registrarControllers {
                 if (clave === claveAdmin) {
                     rol = "admin" 
                 } else {
-                    return res.status('200').json({"alerta":"La clave especial para registrar un Administrador es erronea. Intentarlo nuevamente"})
+                    return res.status('422').json({"error":"La clave especial para registrar un Administrador es erronea. Intentarlo nuevamente"})
                 }
             }
 
