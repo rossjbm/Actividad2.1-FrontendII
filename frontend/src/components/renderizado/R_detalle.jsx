@@ -1,6 +1,5 @@
 import { B_salir } from '../botones/Botones';
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
+
 
 export function RenderizarDetalles({detallePMostrar, detalleP, setDetallePMostrar}) {
 

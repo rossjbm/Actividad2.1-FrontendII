@@ -33,7 +33,7 @@ function App() {
           <Landing setSesion={setSesion} formInicio={formInicio} setFormInicio={setFormInicio}/>
         : inicioMostrar? <> <Inicio sesion={sesion} setSesion={setSesion} inicioMostrar={inicioMostrar} /> </> 
         : favoritosMostrar? <h2>FAVORITO</h2>
-        : perfilMostrar? <Perfil/>
+        : perfilMostrar? <Perfil perfilMostrar={perfilMostrar}/>
         : usuariosMostrar? <Usuarios/>
         : agregarMostrar? <NuevoProducto/>
         : <></>}

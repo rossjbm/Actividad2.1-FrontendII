@@ -35,7 +35,12 @@ export async function EnvioRegistro(registro, url) {
     })
     .then(response => response.json())
     .then(response => {
-        return response.exito
+        if (response.exito) {
+            return response.exito
+        }
+        if (response.error) {
+            throw response.error
+        }
     
     })
     .catch ((error) => {
@@ -85,6 +90,9 @@ export async function Borrar(url, id) {
         if (response.exito) {
             return response.exito
         }
+        if (response.error) {
+            throw response.error
+        }
     })
     .catch ((error) => {
         console.log("Error:", error)
@@ -107,9 +115,41 @@ export async function Editar(documento, url) {
         if (response.exito) {
             return response.exito
         }
+        if (response.error) {
+            throw response.error
+        }
     })
     .catch ((error) => {
         console.log("Error:", error)
         throw error
+    }) 
+}
+
+export async function PerfilBuscar() {
+    var token = await revisarJWT() 
+    return fetch(`http://localhost:3000/usuarios/miPerfil`, {
+        method: 'GET',
+        headers:{'Content-Type': 'application/json',
+                 'Authorization': 'Bearer ' + token
+                }
+    })
+    .then(response => response.json())
+    .then(response => {
+        if (response.alerta) {
+            throw response.alerta
+        }
+        if (response.exito) {
+            console.log(response.exito)
+            return response;
+        }
+        if (response.error) {
+            console.log('error', response.error);
+            throw response.error
+        }else{
+            throw response;
+        } 
+    })
+    .catch ((error) => {
+        throw ("Error:", error)
     }) 
 }

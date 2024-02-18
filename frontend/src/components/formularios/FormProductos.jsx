@@ -9,7 +9,7 @@ const TodasCategorias = ["Nevera", "Lavadora", "Aire Acondicionado", "Microondas
 export function FormProductos({nuevoP, handleChange, enviar}) {
 
     return(<div className='flex justify-center'>
-        <Form className='p-3 my-14 bg-orange-200 rounded sm:w-5/6 lg:w-3/5'>
+        <Form className='p-3 my-14 bg-orange-200 w-11/12 rounded sm:w-5/6 lg:w-3/5'>
             <h4 className='text-center m-4'>Agregar Producto</h4>
 
             <FloatingLabel controlId="nombre" label="Nombre del Producto" className="mb-3">

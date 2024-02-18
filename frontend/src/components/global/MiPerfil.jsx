@@ -1,46 +1,36 @@
-import { useState } from "react"
-import { revisarJWT } from "../../functions/F_revisarJWT";
+import { useState, useEffect } from "react"
+import { PerfilBuscar } from "../../functions/F_fetch"
+import { Loader } from "./Loader"
+import { RenderizarPerfil } from "../renderizado/R_perfil"
 
 
-export function Perfil() {
+export function Perfil({perfilMostrar}) {
     const [resultado, setResultado] = useState()
     const [cargar, setCargar] = useState(false) //estado loader
-    try {
-        const perfil =PerfilBuscar()
-        console.log(perfil);
-    } catch (error) {
-        
-    }
-    return (<>
+    
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const perfil = await PerfilBuscar()
+                setResultado(perfil.exito)
+                console.log('perfil',perfil)
+                console.log(typeof(perfil))
+                if (perfil === undefined) {
+                    setCargar(true)
+                }
+                if (perfil && perfil.length ===0 || perfil) {
+                    setCargar(false)
+                }
+            } catch (error) {
+                console.log('Error', error)
+                throw error
+            }
+        }
+        fetchData()
+    }, [])
 
+    return (<>
+            {cargar ? <Loader/> : <RenderizarPerfil resultado={resultado} setResultado={setResultado} perfilMostrar={perfilMostrar} />}
     </>)
 
 }  
-export async function PerfilBuscar() {
-    var token = await revisarJWT() 
-    return fetch(`http://localhost:3000/usuarios/miPerfil`, {
-        method: 'GET',
-        headers:{'Content-Type': 'application/json',
-                 'Authorization': 'Bearer ' + token
-                }
-    })
-    .then(response => response.json())
-    .then(response => {
-        if (response.alerta) {
-            throw response.alerta
-        }
-        if (response.exito) {
-            console.log(response.exito)
-            return response;
-        }
-        if (response.error) {
-            console.log('error', response.error);
-            throw response.error
-        }else{
-            throw response;
-        } 
-    })
-    .catch ((error) => {
-        throw ("Error:", error)
-    }) 
-}

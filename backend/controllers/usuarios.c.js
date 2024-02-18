@@ -8,7 +8,7 @@ class usuariosControllers {
         try {
             const datos = await usuariosModel.find();
             if (!datos) {
-                res.status('200').json({"alerta":"No hay usuarios registrados"}) //estado
+                res.status('200').json({"error":"No hay usuarios registrados"}) //estado
             }
             console.log(typeof(datos), datos)
             res.send(datos).status('200'); //enviamos respuesta y el estado
@@ -24,28 +24,28 @@ class usuariosControllers {
         try {
             //Comparaciones
             if (!user || !nombre || !apellido || !correo) {
-                return res.status('400').json({"alerta":"Debes ingresar todos los datos solicitados"}) //estado
+                return res.status('400').json({"error":"Debes ingresar todos los datos solicitados"}) //estado
             }
             if (!validator.isEmail(correo)) {
-                return res.status('400').json({"alerta":"El correo no es válido. Verifica e ingresa nuevamente"})
+                return res.status('400').json({"error":"El correo no es válido. Verifica e ingresa nuevamente"})
             }
             //En caso de cambiar contraseña
             if (actual_p || nueva_p || confirmar_p) {
 
                 try {
                     if(!actual_p) {
-                        return res.status('400').json({"alerta":"Debes ingresar tu contraseña actual"})
+                        return res.status('400').json({"error":"Debes ingresar tu contraseña actual"})
                     }
                     const comparar = await usuariosModel.find({_id: _id})
                     const comparacion = await bcryptjs.compare(actual_p, comparar[0].contrasena)
                     if (!comparacion) {
-                        return res.status('400').json({"alerta":"Esta no es tu contraseña actual. Verifica e ingresa nuevamente"})
+                        return res.status('400').json({"error":"Esta no es tu contraseña actual. Verifica e ingresa nuevamente"})
                     }
                     if (!nueva_p && !confirmar_p) {
-                        return res.status('400').json({"alerta":"Debes ingresar la nueva contraseña y confirmarla"})
+                        return res.status('400').json({"error":"Debes ingresar la nueva contraseña y confirmarla"})
                     }
                     if (nueva_p != confirmar_p) {
-                        return res.status('400').json({"alerta":"Las contraseñas no coinciden. Ingresarla nuevamente"})
+                        return res.status('404').json({"error":"Las contraseñas no coinciden. Ingresarla nuevamente"})
                     }
                     const contrasena = await bcryptjs.hash(nueva_p, 8);
                     await usuariosModel.updateOne({_id: _id}, {$set:{contrasena:contrasena}});
@@ -124,7 +124,6 @@ class usuariosControllers {
         const usuario = await usuariosModel.find({user: user})
         console.log(usuario);
         var informacionPublica = usuario[0];
-        informacionPublica._id=null
         informacionPublica.contrasena=null
         res.status('200').json({'exito':informacionPublica})
     }
