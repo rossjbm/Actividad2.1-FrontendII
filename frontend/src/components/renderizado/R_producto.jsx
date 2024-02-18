@@ -16,7 +16,7 @@ export function RenderizarProductos({documentosPaginados, setError, setModalShow
                     : <Eliminar id={producto._id} url="productos" inicioMostrar={inicioMostrar} setResultado={setResultado} documentos={documentos} />}
                 </div>
                 <div className='flex justify-center' onClick={() => {DetallesProducto(producto._id, setDetallePMostrar, setDetalleP)}}>
-                    <img src={producto.img} atl={producto.nombre} onError={(e)=>{e.target.onerror = null; e.target.src=imagenPredeterminada}} className='w-full h-auto border-2 border-grey-100 rounded-3xl'/>
+                    <img src={producto.img} atl={producto.nombre} onError={(e)=>{e.target.onerror = null; e.target.src=imgDefault}} className='w-full h-auto border-2 border-grey-100 rounded-3xl'/>
                 </div>
                 <div className='text-center flex flex-col items-center justify-center gap-3'>
                     <h3 className='text-3xl sm:text-2xl' onClick={() => {DetallesProducto(producto._id, setDetallePMostrar, setDetalleP)}}>{producto.nombre}</h3>
