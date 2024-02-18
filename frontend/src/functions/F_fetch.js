@@ -3,7 +3,9 @@ import { revisarJWT } from "./F_revisarJWT"
 export async function Envio(registro, url) {
     return fetch(`http://localhost:3000/${url}`, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json',},
+        headers:{'Content-Type': 'application/json',
+                 'Authorization': 'Bearer ' + token  
+                },
         body: JSON.stringify(registro)
     })
     .then(response => response.json())
@@ -21,9 +23,9 @@ export async function Listar(url) {
     const token = await revisarJWT()
     return fetch(`http://localhost:3000/${url}`, {
         method: 'GET',
-        headers: {'Content-Type': 'application/json',
-                  'Authorization': 'Bearer ' + token
-                 }
+        headers:{'Content-Type': 'application/json',
+                 'Authorization': 'Bearer ' + token
+                }
     })
     .then(response => response.json())
     .then(response => {
@@ -48,7 +50,9 @@ export async function Listar(url) {
 export async function Borrar(url, id) {
     return fetch(`http://localhost:3000/${url}/delete`, {
         method: 'DELETE',
-        headers: {'Content-Type': 'application/json',},
+        headers:{'Content-Type': 'application/json',
+                 'Authorization': 'Bearer ' + token
+                },
         body: JSON.stringify({id:id})
     })
     .then(response => response.json())
