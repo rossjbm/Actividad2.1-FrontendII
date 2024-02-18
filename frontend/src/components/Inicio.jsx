@@ -33,7 +33,7 @@ export function Inicio({sesion, setSesion, inicioMostrar}) {
 
     return(<>
         {/* llamamos a busqueda */}
-        <Busqueda resultado={resultado} setResultado={setResultado} setSesion={setSesion} cargar={cargar} setCargar={setCargar}/>
+        <Busqueda resultado={resultado} setResultado={setResultado} setSesion={setSesion} cargar={cargar} setCargar={setCargar} sesion={sesion}/>
         
         {/* loader activo */}
         {cargar ? (

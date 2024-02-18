@@ -7,7 +7,7 @@ import { MyVerticallyCenteredModal } from "./global/MensajeAlert";
 
 const TodasCategorias = ["Nevera", "Lavadora", "Aire Acondicionado", "Microondas", "Licuadora", "Televisor", "Congelador"]
 
-export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar}) {
+export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar, sesion}) {
     const [categoria, setCategoria] = useState([]);
     const [valor, setValor] = useState("");
     const [seleccionar, setSeleccionar] = useState(false);
@@ -48,8 +48,12 @@ export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar}
     //enviamos al backend
     async function servidor(){
         try {
-            const documentos = await Listar('productos',setSesion)
+            var documentos = await Listar('productos',setSesion)
+            if (sesion === 1) {
+                documentos = documentos.filter(e => e.cantidad != 0)
+            }
             setResultado(documentos)
+            
             return documentos
         } catch (error) {
             if (error == "debe iniciar sesión") {
@@ -61,16 +65,17 @@ export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar}
                 setModalShow(true)
             }
         }
-        const documentos = await Listar('productos',setSesion)
-        setResultado(documentos)
-        return documentos
+        
     }
 
     // reciba respuestas y devolver busqueda
     async function handleChange() {
         console.log("buscar")
         const documentos = await servidor()
-        const resp = Buscar(valor, categoria, documentos)
+        var resp = Buscar(valor, categoria, documentos)
+        if (sesion === 1) {
+            resp = resp.filter(e => e.cantidad != 0)
+        }
         setResultado(resp)
     }
 

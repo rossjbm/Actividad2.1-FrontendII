@@ -17,7 +17,7 @@ export function NuevoProducto() {
         nombre: "",
         descripcion:"",
         categoria: "",
-        cantidad: "",
+        cantidad: 0,
         precio: "",
         marca: "",
         img: ""

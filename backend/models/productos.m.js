@@ -15,7 +15,7 @@ const productosSchema = new mongoose.Schema( //en mongo el modelo es establecer 
             type: String
         },
         cantidad: {
-            type: String
+            type: Number
         },
         precio: {
             type: String

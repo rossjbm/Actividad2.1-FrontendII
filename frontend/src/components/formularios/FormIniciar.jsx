@@ -50,7 +50,7 @@ export function FormIniciar({setFormInicio, setSesion, setModalShow, setError}) 
     };
     
     return (<>
-        <Form className='p-3 my-20 bg-orange-200 rounded'>
+        <Form className='p-3 my-20 bg-orange-200 rounded sm:w-5/6'>
             <h4 className='text-center m-4'>Iniciar Sesión</h4>
             <FloatingLabel controlId="user" label="Usuario" className="my-3" >
                 <Form.Control type="text" placeholder="Usuario" name='user' value={iniciar.user} onChange={handleChange}/>
@@ -61,7 +61,7 @@ export function FormIniciar({setFormInicio, setSesion, setModalShow, setError}) 
             <Form.Group>
                 <Form.Check type='checkbox' label='Recordar este dispositivo' checked={iniciar.recordar} onChange={handleChange} name='recordar'></Form.Check>
             </Form.Group>
-            <span className='cursor-pointer' onClick={(e)=>{e.preventDefault(), setFormInicio(false)}}>No estas registro? <span className='cursor-pointer hover:text-orange-500' onClick={(e)=>{e.preventDefault(), setFormInicio(false)}}>Regístrate ya</span></span>
+                <span className='cursor-pointer' onClick={(e)=>{e.preventDefault(), setFormInicio(false)}}>¿Aún no te has Registrado? <span className='cursor-pointer hover:text-orange-500' onClick={(e)=>{e.preventDefault(), setFormInicio(false)}}>Regístrate ya</span></span>
             <Form.Group className='flex justify-center mb-6 mt-10' >
                 <Button type="submit" onClick={enviar} className='bg-black-200 text-black-300 pb-4 rounded w-24 h-10 text-xl'>Iniciar</Button>
             </Form.Group>
