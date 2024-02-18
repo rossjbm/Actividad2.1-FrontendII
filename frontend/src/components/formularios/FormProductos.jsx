@@ -1,14 +1,15 @@
 // estilos
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
+import { Button } from 'react-bootstrap';
 
 const TodasCategorias = ["Nevera", "Lavadora", "Aire Acondicionado", "Microondas", "Licuadora", "Televisor", "Congelador"]
 
 
 export function FormProductos({nuevoP, handleChange, enviar}) {
 
-    return(<>
-        <Form className='p-3 my-20 bg-orange-200 rounded'>
+    return(<div className='flex justify-center'>
+        <Form className='p-3 my-14 bg-orange-200 rounded sm:w-5/6 lg:w-3/5'>
             <h4 className='text-center m-4'>Agregar Producto</h4>
 
             <FloatingLabel controlId="nombre" label="Nombre del Producto" className="mb-3">
@@ -46,9 +47,9 @@ export function FormProductos({nuevoP, handleChange, enviar}) {
             
 
             <div className='flex justify-center mb-6 mt-10'>
-                <button type="submit" onClick={enviar} className='bg-white text-black-300 px-8 py-2 rounded w-auto h-10 text-xl'>Guardar</button>
+                <Button type="submit" onClick={enviar} style={{background:'#212226', border:'none'}} className='pb-4 rounded w-24 h-10 text-xl'>Agregar</Button>
             </div>
         </Form>
-    </>)
+    </div>)
     
 }

@@ -4,7 +4,7 @@ import { FaUserEdit } from "react-icons/fa";
 
 export function RenderizarUsuarios({ documentosPaginados , documentos, setResultado}){
     
-    return (<div className="py-4 px-2 grid grid-cols-1 h-full w-full place-content-center place-items-center gap-16 sm:grid-cols-2">
+    return (<div className="py-4 px-2 grid grid-cols-1 h-full w-full place-content-center place-items-center gap-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         {documentosPaginados.map((usuario, i) => (
             <section key={i} className='border-4 border-orange-300 flex flex-col justify-center w-11/12 p-4 rounded-3xl gap-5'>
                 <div className="flex justify-center items-center gap-3">

@@ -5,7 +5,7 @@ import { Eliminar } from "../crud/Eliminar"
 
 export function RenderizarProductos({documentosPaginados, setError, setModalShow, sesion, setDetallePMostrar, setDetalleP, inicioMostrar, documentos, setResultado}){
     
-    return (<div className="py-5 px-3 grid grid-cols-1 h-full w-full place-content-center place-items-center gap-16 sm:grid-cols-2">
+    return (<div className="py-5 px-3 grid grid-cols-1 h-full w-full place-content-center place-items-center gap-16 sm:grid-cols-2 lg:grid-cols-3">
         {documentosPaginados.map((producto, i) => (
             <section key={i} className='border-4 border-grey-100 flex flex-col justify-center w-11/12 p-4 rounded-tr-3xl gap-4'>
                 <div className='flex justify-end'>
@@ -17,8 +17,8 @@ export function RenderizarProductos({documentosPaginados, setError, setModalShow
                     <img src={producto.img} atl={producto.nombre} className='w-full h-auto border-2 border-grey-100 rounded-3xl'/>
                 </div>
                 <div className='text-center flex flex-col items-center justify-center gap-3'>
-                    <h3 className='text-3xl' onClick={() => {DetallesProducto(producto._id, setDetallePMostrar, setDetalleP)}}>{producto.nombre}</h3>
-                    <p className='m-1 p-2 rounded-3xl bg-orange-200 w-auto text-xl'>{producto.categoria}</p>
+                    <h3 className='text-3xl sm:text-2xl' onClick={() => {DetallesProducto(producto._id, setDetallePMostrar, setDetalleP)}}>{producto.nombre}</h3>
+                    <p className='m-1 p-2 rounded-3xl bg-orange-200 w-auto text-xl sm:text-base'>{producto.categoria}</p>
                     <p className='text-base'>{producto.descripcion}</p>
                 </div>
                 <div className='flex justify-around items-center text-center'>
@@ -28,7 +28,7 @@ export function RenderizarProductos({documentosPaginados, setError, setModalShow
                 <div className='flex justify-center mt-3'>
                     {sesion===1?
                         <ComprarButton setResultado={setResultado} i={i} documentos={documentos} setError={setError} setModalShow={setModalShow} producto_id={producto._id} className='w-full h-14 bg-orange-300 hover:bg-orange-500 hover:scale-102 duration-200 border-solid border-2 rounded-md border-black-300 text-white text-2xl'>C O M P R A R</ComprarButton>
-                    :   <button className='w-full h-14 bg-orange-300 text-white text-2xl'>E D I T A R</button>
+                    :   <button className='w-full h-14 bg-orange-300 text-white text-2xl sm:text-xl rounded sm:h-10'>E D I T A R</button>
                 }
                 </div>
             </section>

@@ -7,7 +7,7 @@ export function Menu({menu, setMenu, sesion, setFavoritosMostrar, setInicioMostr
         {/* si menu esta abierto */}
         {menu ? 
             <div onClick={() => {setMenu(false); console.log("salir")}} className="flex justify-end w-full fixed top-0 right-0 z-10 h-full bg-black-100">
-                <nav className="w-1/2 h-full p-2 bg-orange-200 ">
+                <nav className="w-1/2 h-full p-2 bg-orange-200 md:w-2/5 lg:w-2/6">
 
                     {/* salir del menu */}
                     <div className="mb-4 flex">

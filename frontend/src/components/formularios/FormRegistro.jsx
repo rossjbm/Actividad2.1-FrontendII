@@ -5,6 +5,7 @@ import { mostrarSeccion } from '../../functions/F_mostrar';
 // estilos
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
+import { Button } from 'react-bootstrap';
 
 export function FormRegistro({setFormInicio, setModalShow, setError}) {
     const [registro, setRegistro] = useState({
@@ -35,8 +36,8 @@ export function FormRegistro({setFormInicio, setModalShow, setError}) {
         
     };
     
-    return (<>
-        <Form className='p-3 my-20 bg-orange-200 rounded'>
+    return (<div className='flex justify-center'>
+        <Form className='p-3 my-20 bg-orange-200 rounded sm:w-5/6 lg:w-3/5'>
             <h4 className='text-center m-4'>Regístrate</h4>
 
             <FloatingLabel controlId="nombre_usuario" label="Nombre" className="mb-3">
@@ -62,10 +63,9 @@ export function FormRegistro({setFormInicio, setModalShow, setError}) {
             <FloatingLabel controlId="confirmar_p" label="Confirmar Contraseña" className="mb-5">
                 <Form.Control type="password" placeholder="Password" name='confirmar_p' value={registro.confirmar_p} onChange={handleChange}/>
             </FloatingLabel>
-            <span className='cursor-pointer' onClick={(e)=>{e.preventDefault(), setFormInicio(true)}}> Ya tienes una cuenta? <span className='cursor-pointer hover:text-orange-500' onClick={(e)=>{e.preventDefault(), setFormInicio(true)}}>Inicia sesión aquí</span></span>
 
             <div className='text-center'>
-                <button className="text-sm " onClick={(e) => {mostrarSeccion(e, admin, setAdmin)}}>¿Serás administrador? Presiona aquí</button>
+                <button className="text-base " onClick={(e) => {mostrarSeccion(e, admin, setAdmin)}}>¿Serás administrador? Presiona aquí</button>
             </div>
 
             {admin ? <>
@@ -74,9 +74,13 @@ export function FormRegistro({setFormInicio, setModalShow, setError}) {
                 </FloatingLabel>
             </> : null}
 
+            <div className='flex justify-center mt-10'>
+                <span className='cursor-pointer' onClick={(e)=>{e.preventDefault(), setFormInicio(true)}}> ¿Ya tienes una cuenta? <span className='cursor-pointer hover:text-orange-500' onClick={(e)=>{e.preventDefault(), setFormInicio(true)}}>Inicia sesión aquí</span></span>
+            </div>
+            
             <div className='flex justify-center mb-6 mt-10'>
-                <button type="submit" onClick={enviar} className='bg-white text-black-300 px-8 py-2 rounded w-auto h-10 text-xl'>Aceptar</button>
+                <Button type="submit" onClick={enviar} style={{background:'#212226', border:'none'}} className='pb-4 rounded w-24 h-10 text-xl'>Aceptar</Button>
             </div>
         </Form>
-    </>)
+    </div>)
 }

@@ -81,7 +81,7 @@ export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar,
 
     return(<>
         <div className="flex flex-col justify-between items-center gap-10 my-12">
-            <input type="text" placeholder="Ingresa nombre o descripción..." value={valor} onChange={(e) => {setValor(e.target.value)}} className="w-11/12 h-14 rounded bg-orange-200 px-3 focus:outline-none focus:border-2 focus:border-orange-300 focus:bg-white text-2xl placeholder:text-black-100 shadow-2xl"></input>
+            <input type="text" placeholder="Ingresa nombre o descripción..." value={valor} onChange={(e) => {setValor(e.target.value)}} className="w-11/12 sm:5/6 lg:w-3/5 h-14 rounded bg-orange-200 px-3 focus:outline-none focus:border-2 focus:border-orange-300 focus:bg-white text-2xl placeholder:text-black-100 shadow-2xl"></input>
 
             <div className="flex flex-col justify-center items-center p-3 gap-8">
                 <button className="text-black-100 text-lg hover:scale-105 active:font-bold" onClick={(e) => mostrarSeccion(e, seleccionar, setSeleccionar)}>Selecciona una Categoría ¡Aquí!</button>

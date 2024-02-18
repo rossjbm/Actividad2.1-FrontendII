@@ -6,8 +6,8 @@ export function RenderizarDetalles({detallePMostrar, detalleP, setDetallePMostra
 
     return (<>
         {detallePMostrar ? <>
-            <section className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black-100">
-                <div className="w-11/12 h-5/6 bg-white border-4 border-orange-300 rounded overflow-y-auto px-4 py-7 flex flex-col justify-start items-center gap-4">
+            <section className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black-100 ">
+                <div className="w-11/12 h-5/6 bg-white border-4 border-orange-300 rounded overflow-y-auto px-4 py-7 flex flex-col justify-start items-center gap-4 sm:w-3/5">
                     <div className='flex justify-end w-full'>
                         <B_salir estado={setDetallePMostrar} />
                     </div>
