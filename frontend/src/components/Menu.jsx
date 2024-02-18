@@ -1,8 +1,8 @@
 import { B_salir } from "./botones/Botones"
 import {S_cliente , S_admin} from ".././functions/F_secciones"
+import {cerrar} from '../functions/F_cerrar'
 
-
-export function Menu({menu, setMenu, sesion, setFavoritosMostrar, setInicioMostrar, setPerfilMostrar, setUsuariosMostrar, setAgregarMostrar}) {
+export function Menu({menu, setMenu, sesion, setSesion, setFavoritosMostrar, setInicioMostrar, setPerfilMostrar, setUsuariosMostrar, setAgregarMostrar}) {
     return (<>
         {/* si menu esta abierto */}
         {menu ? 
@@ -21,7 +21,7 @@ export function Menu({menu, setMenu, sesion, setFavoritosMostrar, setInicioMostr
                         <button className="text-xl" onClick={() => {S_cliente(1, 0, 0, {setFavoritosMostrar}, {setInicioMostrar}, {setPerfilMostrar})}}>Inicio</button>
                         <button className="text-xl" onClick={() => {S_cliente(0, 1, 0, {setFavoritosMostrar}, {setInicioMostrar}, {setPerfilMostrar})}} >Favoritos</button>
                         <button className="text-xl" onClick={() => {S_cliente(0, 0, 1, {setFavoritosMostrar}, {setInicioMostrar}, {setPerfilMostrar})}} >Perfil</button>
-                        <button className="text-xl" onClick={() => {}}>Cerrar Sesión</button>
+                        <button className="text-xl" onClick={(e) => {e.preventDefault(),cerrar(setSesion)}}>Cerrar Sesión</button>
                     </div>
 
                     : sesion===2 ?
@@ -32,7 +32,7 @@ export function Menu({menu, setMenu, sesion, setFavoritosMostrar, setInicioMostr
                         <button className="text-xl" onClick={() => {S_admin(0, 1, 0, 0, {setUsuariosMostrar}, {setInicioMostrar}, {setPerfilMostrar}, {setAgregarMostrar})}}>Usuarios</button>
                         <button className="text-xl" onClick={() => {S_admin(0, 0, 1, 0, {setUsuariosMostrar}, {setInicioMostrar}, {setPerfilMostrar}, {setAgregarMostrar})}}>Agregar Mercancía</button>
                         <button className="text-xl" onClick={() => {S_admin(0, 0, 0, 1, {setUsuariosMostrar}, {setInicioMostrar}, {setPerfilMostrar}, {setAgregarMostrar})}}>Perfil</button>
-                        <button className="text-xl">Cerrar Sesión</button>
+                        <button className="text-xl" onClick={(e) => {e.preventDefault(),cerrar(setSesion)}}>Cerrar Sesión</button>
                     </div>
 
                     : null }

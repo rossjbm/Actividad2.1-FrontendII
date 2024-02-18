@@ -22,7 +22,7 @@ function App() {
   return (
     <>
       <header>
-        <Menu menu={menu} setMenu={setMenu} sesion={sesion} setFavoritosMostrar={setFavoritosMostrar} setInicioMostrar={setInicioMostrar} setPerfilMostrar={setPerfilMostrar} setUsuariosMostrar={setUsuariosMostrar} setAgregarMostrar={setAgregarMostrar} />
+        <Menu menu={menu} setMenu={setMenu} sesion={sesion} setSesion={setSesion} setFavoritosMostrar={setFavoritosMostrar} setInicioMostrar={setInicioMostrar} setPerfilMostrar={setPerfilMostrar} setUsuariosMostrar={setUsuariosMostrar} setAgregarMostrar={setAgregarMostrar} />
 
         <Header sesion={sesion} formInicio={formInicio} setFormInicio={setFormInicio} menu={menu} setMenu={setMenu}/> 
       </header>
