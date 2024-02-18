@@ -18,11 +18,11 @@ export async function Envio(registro, url) {
 }
 
 export async function Listar(url) {
-    // const token = await revisarJWT()
+    const token = await revisarJWT()
     return fetch(`http://localhost:3000/${url}`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
-                //   'Authorization': 'Bearer ' + token
+                  'Authorization': 'Bearer ' + token
                  }
     })
     .then(response => response.json())
