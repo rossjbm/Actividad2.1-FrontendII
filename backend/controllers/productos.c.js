@@ -42,7 +42,7 @@ class productosControllers {
     }
 
     async editar(req, res, next) {
-        const {id, img, nombre, descripcion, categoria, cantidad, precio, marca} = req.body
+        const {_id, img, nombre, descripcion, categoria, cantidad, precio, marca} = req.body
 
         try {
             //Comparaciones
@@ -53,7 +53,7 @@ class productosControllers {
             //Hacer edición
             const documento = { img, nombre, descripcion, categoria, cantidad, precio, marca}
             console.log('editar:', documento)
-            await productosModel.updateOne({_id: id}, {$set:documento});
+            await productosModel.updateOne({_id: _id}, {$set:documento});
             res.status('200').json({"exito":"Se ha editado correctamente el producto"})
             
         } catch (error) {

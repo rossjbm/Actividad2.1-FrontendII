@@ -41,6 +41,7 @@ export function Eliminar({id, documentos, setResultado, url, inicioMostrar}){
             console.log(showMensaje)
         }catch (error){
             console.log("Error:", error)
+            throw error
         }
     }
 

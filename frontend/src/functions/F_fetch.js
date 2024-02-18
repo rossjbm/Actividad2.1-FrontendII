@@ -91,3 +91,25 @@ export async function Borrar(url, id) {
         throw error
     }) 
 }
+
+export async function Editar(documento, url, id) {
+    const token = await revisarJWT()
+    return fetch(`http://localhost:3000/${url}`, {
+        method: 'PUT',
+        headers:{'Content-Type': 'application/json',
+                 'Authorization': 'Bearer ' + token  
+                },
+        body: JSON.stringify(documento)
+    })
+    .then(response => response.json())
+    .then(response => {
+        console.log(response);
+        if (response.exito) {
+            return response.exito
+        }
+    })
+    .catch ((error) => {
+        console.log("Error:", error)
+        throw error
+    }) 
+}
