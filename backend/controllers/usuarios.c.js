@@ -126,7 +126,7 @@ class usuariosControllers {
         var informacionPublica = usuario[0];
         informacionPublica._id=null
         informacionPublica.contrasena=null
-        res.status('202').json({'exito':informacionPublica})
+        res.status('200').json({'exito':informacionPublica})
     }
 }
 
