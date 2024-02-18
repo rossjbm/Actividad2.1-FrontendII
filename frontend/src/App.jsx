@@ -7,7 +7,7 @@ import { Inicio } from './components/Inicio';
 import { Usuarios } from './components/Usuarios';
 
 function App() {
-  const [sesion, setSesion] = useState(1);
+  const [sesion, setSesion] = useState(2);
   const [menu, setMenu] = useState(false)
   const [formInicio, setFormInicio] = useState(true);
   //secciones
@@ -15,13 +15,13 @@ function App() {
   const [favoritosMostrar, setFavoritosMostrar] = useState(false)
   const [perfilMostrar, setPerfilMostrar] = useState(false)
   const [usuariosMostrar, setUsuariosMostrar] = useState(false)
-  const [inventarioMostrar, setInventarioMostrar] = useState(false)
+  const [agregarMostrar, setAgregarMostrar] = useState(false)
 
 
   return (
     <>
       <header>
-        <Menu menu={menu} setMenu={setMenu} sesion={sesion} setFavoritosMostrar={setFavoritosMostrar} setInicioMostrar={setInicioMostrar} setPerfilMostrar={setPerfilMostrar} setUsuariosMostrar={setUsuariosMostrar} setInventarioMostrar={setInventarioMostrar} />
+        <Menu menu={menu} setMenu={setMenu} sesion={sesion} setFavoritosMostrar={setFavoritosMostrar} setInicioMostrar={setInicioMostrar} setPerfilMostrar={setPerfilMostrar} setUsuariosMostrar={setUsuariosMostrar} setAgregarMostrar={setAgregarMostrar} />
 
         <Header sesion={sesion} formInicio={formInicio} setFormInicio={setFormInicio} menu={menu} setMenu={setMenu}/> 
       </header>
@@ -29,11 +29,11 @@ function App() {
       <main className='min-h-[640px] sm:min-h-96'>
         {sesion===0 ? 
           <Landing setSesion={setSesion} formInicio={formInicio} setFormInicio={setFormInicio}/>
-        : inicioMostrar? <> <Inicio sesion={sesion} setSesion={setSesion}/> </> 
+        : inicioMostrar? <> <Inicio sesion={sesion} setSesion={setSesion} inicioMostrar={inicioMostrar} /> </> 
         : favoritosMostrar? <h2>FAVORITO</h2>
         : perfilMostrar? <h2>PERFIL</h2>
         : usuariosMostrar? <Usuarios/>
-        : inventarioMostrar? <h2>INVENTARIO</h2>
+        : agregarMostrar? <h2>agregar</h2>
         : <></>}
 
       </main>

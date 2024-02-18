@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Paginacion } from "./global/Paginacion"
 import { Listar } from "../functions/F_fetch";
+import { Loader } from "./global/Loader";
 import { RenderizarUsuarios } from "./renderizado/R_usuario";
 
 export function Usuarios() {
@@ -31,9 +32,7 @@ export function Usuarios() {
     return(<>
         {cargar ? (
             <>
-                <div className="flex justify-center items-center">
-                    <div className="w-16 h-16 border-t-4 border-beige-800 rounded-full animate-spin"></div>
-                </div>
+                <Loader/>
             </>
         ) : (
             <>

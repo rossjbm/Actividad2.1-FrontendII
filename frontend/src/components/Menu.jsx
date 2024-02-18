@@ -2,7 +2,7 @@ import { B_salir } from "./botones/Botones"
 import {S_cliente , S_admin} from ".././functions/F_secciones"
 
 
-export function Menu({menu, setMenu, sesion, setFavoritosMostrar, setInicioMostrar, setPerfilMostrar, setUsuariosMostrar, setInventarioMostrar}) {
+export function Menu({menu, setMenu, sesion, setFavoritosMostrar, setInicioMostrar, setPerfilMostrar, setUsuariosMostrar, setAgregarMostrar}) {
     return (<>
         {/* si menu esta abierto */}
         {menu ? 
@@ -28,10 +28,10 @@ export function Menu({menu, setMenu, sesion, setFavoritosMostrar, setInicioMostr
 
                     // menu de navegacuion cuando esta el administrador
                     <div className="flex flex-col justify-center gap-10 w-full items-center p-0 m-0">
-                        <button className="text-xl" onClick={() => {S_admin(1, 0, 0, 0, {setUsuariosMostrar}, {setInicioMostrar}, {setPerfilMostrar}, {setInventarioMostrar})}}>Inicio</button>
-                        <button className="text-xl" onClick={() => {S_admin(0, 1, 0, 0, {setUsuariosMostrar}, {setInicioMostrar}, {setPerfilMostrar}, {setInventarioMostrar})}}>Usuarios</button>
-                        <button className="text-xl" onClick={() => {S_admin(0, 0, 1, 0, {setUsuariosMostrar}, {setInicioMostrar}, {setPerfilMostrar}, {setInventarioMostrar})}}>Inventario</button>
-                        <button className="text-xl" onClick={() => {S_admin(0, 0, 0, 1, {setUsuariosMostrar}, {setInicioMostrar}, {setPerfilMostrar}, {setInventarioMostrar})}}>Perfil</button>
+                        <button className="text-xl" onClick={() => {S_admin(1, 0, 0, 0, {setUsuariosMostrar}, {setInicioMostrar}, {setPerfilMostrar}, {setAgregarMostrar})}}>Inicio</button>
+                        <button className="text-xl" onClick={() => {S_admin(0, 1, 0, 0, {setUsuariosMostrar}, {setInicioMostrar}, {setPerfilMostrar}, {setAgregarMostrar})}}>Usuarios</button>
+                        <button className="text-xl" onClick={() => {S_admin(0, 0, 1, 0, {setUsuariosMostrar}, {setInicioMostrar}, {setPerfilMostrar}, {setAgregarMostrar})}}>Agregar Mercancía</button>
+                        <button className="text-xl" onClick={() => {S_admin(0, 0, 0, 1, {setUsuariosMostrar}, {setInicioMostrar}, {setPerfilMostrar}, {setAgregarMostrar})}}>Perfil</button>
                         <button className="text-xl">Cerrar Sesión</button>
                     </div>
 

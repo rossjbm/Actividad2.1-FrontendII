@@ -2,13 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 const productosControllers = require("../controllers/productos.c")
-const {JWT, JWTadmin} = require('../middleware/verificarJWT')
+// const {JWT, JWTadmin} = require('../middleware/verificarJWT')
 
 /* GET users listing. */
-router.get('/' ,JWT, productosControllers.listar);
-router.post('/create', JWTadmin, productosControllers.agregar);
-router.put('/comprar', JWT, productosControllers.comprar);
-router.put('/edit',JWTadmin, productosControllers.editar);
-router.delete('/delete',JWTadmin, productosControllers.eliminar);
+router.get('/' , productosControllers.listar);
+router.post('/create', productosControllers.agregar);
+router.put('/comprar',  productosControllers.comprar);
+router.put('/edit', productosControllers.editar);
+router.delete('/delete', productosControllers.eliminar);
 
 module.exports = router;

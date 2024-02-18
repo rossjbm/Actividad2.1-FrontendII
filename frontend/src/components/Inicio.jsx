@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import { Busqueda } from "./Busqueda"
+import { Loader } from "./global/Loader"
 import { Paginacion } from "./global/Paginacion"
 import { RenderizarProductos } from "./renderizado/R_producto"
 import { RenderizarDetalles } from "./renderizado/R_detalle"
 import { MyVerticallyCenteredModal } from "./global/MensajeAlert";
 
-export function Inicio({sesion, setSesion}) {
+export function Inicio({sesion, setSesion, inicioMostrar}) {
     const [resultado, setResultado] = useState()
     const [cargar, setCargar] = useState(false)
     const [detallePMostrar, setDetallePMostrar] = useState(false)
@@ -30,15 +31,12 @@ export function Inicio({sesion, setSesion}) {
         <Busqueda resultado={resultado} setResultado={setResultado} setSesion={setSesion} cargar={cargar} setCargar={setCargar}/>
         {cargar ? (
             <>
-                <div className="flex justify-center items-center">
-                    <div className="w-16 h-16 border-t-4 border-beige-800 rounded-full animate-spin"></div>
-                </div>
+                <Loader></Loader>
             </>
         ) : (
             <>
-                <Paginacion documentos={resultado} setError={setError} setModalShow={setModalShow} Renderizado={RenderizarProductos} limite={8} sesion={sesion} setDetallePMostrar={setDetallePMostrar} setDetalleP={setDetalleP}/>
+                <Paginacion documentos={resultado} setError={setError} setModalShow={setModalShow} Renderizado={RenderizarProductos} limite={8} sesion={sesion} setDetallePMostrar={setDetallePMostrar} setDetalleP={setDetalleP} inicioMostrar={inicioMostrar} setResultado={setResultado}/>
                 <RenderizarDetalles detallePMostrar={detallePMostrar} detalleP={detalleP} setDetallePMostrar={setDetallePMostrar}/>
-                {/* <RenderizarProductos resultado={resultado} sesion={sesion} setDetallePMostrar={setDetallePMostrar} setDetalleP={setDetalleP}/> */}
             </>
         )}
         

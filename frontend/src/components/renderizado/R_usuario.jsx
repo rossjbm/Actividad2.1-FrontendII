@@ -24,7 +24,7 @@ export function RenderizarUsuarios({ documentosPaginados , documentos, setResult
                 </div>
                 <div className="flex justify-around w-full gap-3">
                     <button onClick={() => {console.log('editar')}} className="bg-botones-100 w-full h-12 flex justify-center items-center"><FaUserEdit className="text-4xl "/></button>
-                    <Eliminar id={usuario._id} setResultado={setResultado} documentos={documentos}/>
+                    <Eliminar id={usuario._id} setResultado={setResultado} documentos={documentos} url="usuarios" />
                 </div>
             </section>
         ))}

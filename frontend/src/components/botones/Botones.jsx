@@ -1,4 +1,3 @@
-import { FaRegTrashAlt } from "react-icons/fa";
 import { IoCloseOutline } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";

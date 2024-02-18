@@ -1,8 +1,9 @@
 import { B_favorito } from "../botones/B_favorito"
 import { DetallesProducto } from "../../functions/F_detallesp"
 import { ComprarButton } from "../crud/Comprar"
+import { Eliminar } from "../crud/Eliminar"
 
-export function RenderizarProductos({ documentosPaginados, setError, setModalShow, sesion, setDetallePMostrar, setDetalleP}){
+export function RenderizarProductos({ documentosPaginados, setError, setModalShow, sesion, setDetallePMostrar, setDetalleP, inicioMostrar, documentos, setResultado}){
     
     return (<div className="py-5 px-3 grid grid-cols-1 h-full w-full place-content-center place-items-center gap-16 sm:grid-cols-2">
         {documentosPaginados.map((producto, i) => (
@@ -10,7 +11,7 @@ export function RenderizarProductos({ documentosPaginados, setError, setModalSho
                 <div className='flex justify-end'>
                     {sesion===1?
                         <B_favorito id={i} />
-                    : <p>boton basura</p>}
+                    : <Eliminar id={producto._id} url="productos" inicioMostrar={inicioMostrar} setResultado={setResultado} documentos={documentos} />}
                 </div>
                 <div className='flex justify-center' onClick={() => {DetallesProducto(producto._id, setDetallePMostrar, setDetalleP)}}>
                     <img src={producto.img} atl={producto.nombre} className='w-full h-auto border-2 border-grey-100 rounded-3xl'/>

@@ -7,10 +7,10 @@ export function S_cliente(E1, E2, E3, {setFavoritosMostrar}, {setInicioMostrar},
     return
 }
 
-export function S_admin(E1, E2, E3, E4, {setUsuariosMostrar}, {setInicioMostrar}, {setPerfilMostrar}, {setInventarioMostrar}){
+export function S_admin(E1, E2, E3, E4, {setUsuariosMostrar}, {setInicioMostrar}, {setPerfilMostrar}, {setAgregarMostrar}){
     setInicioMostrar(E1)
     setUsuariosMostrar(E2)
-    setInventarioMostrar(E3)
+    setAgregarMostrar(E3)
     setPerfilMostrar(E4)
     return
 }
