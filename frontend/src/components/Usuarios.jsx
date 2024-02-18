@@ -5,16 +5,20 @@ import { Loader } from "./global/Loader";
 import { RenderizarUsuarios } from "./renderizado/R_usuario";
 
 export function Usuarios() {
+    //guardar usuarios actuales
     const [resultado, setResultado] = useState()
-    const [cargar, setCargar] = useState(false)
+    const [cargar, setCargar] = useState(false) //estado loader
 
     useEffect( () => {
-        async function fetchData() {
-            const res = await Listar('usuarios')
-
-            //solo se mostrarán los usuarios clientes
-            const documentos = res.filter(r => r.rol != 'admin')
-            setResultado(documentos)
+        async function fetchData() { //fecthData es una funcion asincrona que se permite en React
+            try {
+                const res = await Listar('usuarios') //llamanos a Listar Fetch
+                //solo se mostrarán los usuarios clientes
+                const documentos = res.filter(r => r.rol != 'admin')
+                setResultado(documentos) 
+            } catch (error) {
+                console.log('Error', error)
+            }
         }
         fetchData();
     }, []);

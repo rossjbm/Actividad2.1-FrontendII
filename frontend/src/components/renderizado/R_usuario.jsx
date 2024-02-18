@@ -1,5 +1,5 @@
 import { Eliminar } from "../crud/Eliminar";
-import { FaUserShield } from "react-icons/fa";
+import { FaUserLarge } from "react-icons/fa6";
 import { FaUserEdit } from "react-icons/fa";
 
 export function RenderizarUsuarios({ documentosPaginados , documentos, setResultado}){
@@ -9,7 +9,7 @@ export function RenderizarUsuarios({ documentosPaginados , documentos, setResult
             <section key={i} className='border-4 border-orange-300 flex flex-col justify-center w-11/12 p-4 rounded-3xl gap-5'>
                 <div className="flex justify-center items-center gap-3">
                     <div>
-                        <FaUserShield className="w-full h-full text-5xl"/>
+                        <FaUserLarge className="w-full h-full text-4xl"/>
                     </div>
                     <h3 className="text-3xl">{usuario.user}</h3>
                     

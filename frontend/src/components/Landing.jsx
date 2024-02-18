@@ -5,11 +5,13 @@ import {MyVerticallyCenteredModal} from "./global/MensajeAlert"
 
 export function Landing({formInicio , setFormInicio, setSesion}) {
 
+    // funcion para el modal de error inicio de sesion
     const handleHide = () => {
         setModalShow(false);
         setError('');
         setSesion(0);
     };
+    // estados para manejo de error en el inici de sesion
     const [error, setError] = useState("");
     const [modalShow, setModalShow] = useState(false);
 

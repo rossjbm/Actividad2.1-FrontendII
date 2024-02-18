@@ -1,20 +1,15 @@
 import { revisarJWT } from "./F_revisarJWT"
 
-export async function EnvioRegistro(registro) {
-    return fetch('http://localhost:3000/registrar', {
+export async function Envio(registro, url) {
+    return fetch(`http://localhost:3000/${url}`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json',},
         body: JSON.stringify(registro)
     })
     .then(response => response.json())
     .then(response => {
-        if (response.error) {
-            throw response.error
-        }
-        if (response.exito) {
-            
-            return response.exito
-        }
+        return response.exito
+    
     })
     .catch ((error) => {
         console.log("Error:", error)

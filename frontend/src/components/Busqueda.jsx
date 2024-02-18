@@ -66,7 +66,7 @@ export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar}
         return documentos
     }
 
-
+    // reciba respuestas y devolver busqueda
     async function handleChange() {
         console.log("buscar")
         const documentos = await servidor()
@@ -81,6 +81,7 @@ export function Busqueda({resultado, setResultado, setSesion, cargar, setCargar}
             <div className="flex flex-col justify-center items-center p-3 gap-8">
                 <button className="text-black-100 text-lg hover:scale-105 active:font-bold" onClick={(e) => mostrarSeccion(e, seleccionar, setSeleccionar)}>Selecciona una Categoría ¡Aquí!</button>
 
+                {/* serie de categorias */}
                 <div className={seleccionar ? "flex flex-wrap justify-center" : "hidden"}>
                     {TodasCategorias.map((c, i) => ( 
                         <label key={i} className={`m-1 p-1 rounded-3xl ${categoria.includes(c) ? 'bg-orange-300 px-3 text-white' : 'border-1 border-black-300 bg-white px-3'}`} > 

@@ -5,6 +5,7 @@ import { Landing } from './components/Landing';
 import { Footer } from './components/Footer';
 import { Inicio } from './components/Inicio';
 import { Usuarios } from './components/Usuarios';
+import { NuevoProducto } from './components/NuevoProducto';
 
 function App() {
   const [sesion, setSesion] = useState(2);
@@ -33,7 +34,7 @@ function App() {
         : favoritosMostrar? <h2>FAVORITO</h2>
         : perfilMostrar? <h2>PERFIL</h2>
         : usuariosMostrar? <Usuarios/>
-        : agregarMostrar? <h2>agregar</h2>
+        : agregarMostrar? <NuevoProducto/>
         : <></>}
 
       </main>

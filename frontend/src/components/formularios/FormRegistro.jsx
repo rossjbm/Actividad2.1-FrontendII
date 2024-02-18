@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { EnvioRegistro } from '../../functions/F_fetch';
+import { Envio } from '../../functions/F_fetch';
 import { mostrarSeccion } from '../../functions/F_mostrar';
 
 // estilos
@@ -25,7 +25,7 @@ export function FormRegistro({setFormInicio, setModalShow, setError}) {
         e.preventDefault();
         console.log(registro);
         try {
-            const enviado = await EnvioRegistro(registro)
+            const enviado = await Envio(registro, 'registrar')
             console.log(enviado);
             setFormInicio(true)
         } catch (error) {
