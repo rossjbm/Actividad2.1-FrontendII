@@ -26,7 +26,7 @@ export function FormRegistro({setFormInicio, setModalShow, setError}) {
         e.preventDefault();
         console.log(registro);
         try {
-            const enviado = await Envio(registro, 'registrar')
+            const enviado = await EnvioRegistro(registro, 'registrar')
             console.log(enviado);
             setFormInicio(true)
         } catch (error) {
