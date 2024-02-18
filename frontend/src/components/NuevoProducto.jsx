@@ -44,6 +44,15 @@ export function NuevoProducto() {
                     setMensaje(enviado)
                     console.log(enviado);
                     setShowMensaje(true)
+                    setNuevoP({
+                        nombre: "",
+                        descripcion:"",
+                        categoria: "",
+                        cantidad: 0,
+                        precio: "",
+                        marca: "",
+                        img: ""
+                    });
                 } catch (error) {
                     console.log('error', error)
                     setError(error)
