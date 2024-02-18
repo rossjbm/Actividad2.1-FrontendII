@@ -9,7 +9,7 @@ import { Button } from 'react-bootstrap';
 const TodasCategorias = ["Nevera", "Lavadora", "Aire Acondicionado", "Microondas", "Licuadora", "Televisor", "Congelador"]
 
 
-export function FormEditar({editable, handleChange, enviar, setEditarMostrar}) {
+export function FormEditarP({editable, handleChange, enviar, setEditarMostrar}) {
 
     return(<div className='fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black-100 '>
         <Form className='w-11/12 h-5/6 bg-orange-200 border-4 border-orange-300 rounded overflow-y-auto px-5 py-6 flex flex-col justify-start items-center gap-4 sm:w-3/5'>

@@ -1,6 +1,6 @@
 import { Eliminar } from "../crud/Eliminar";
+import { EditarUsuarios } from "../crud/EditarU";
 import { FaUserLarge } from "react-icons/fa6";
-import { FaUserEdit } from "react-icons/fa";
 
 export function RenderizarUsuarios({ documentosPaginados , documentos, setResultado}){
     
@@ -23,7 +23,7 @@ export function RenderizarUsuarios({ documentosPaginados , documentos, setResult
                     </div>
                 </div>
                 <div className="flex justify-around w-full gap-3">
-                    <button onClick={() => {console.log('editar')}} className="bg-botones-100 w-full h-12 flex justify-center items-center"><FaUserEdit className="text-4xl "/></button>
+                    <EditarUsuarios id={usuario._id} setResultado={setResultado}/>
                     <Eliminar id={usuario._id} setResultado={setResultado} documentos={documentos} url="usuarios" />
                 </div>
             </section>

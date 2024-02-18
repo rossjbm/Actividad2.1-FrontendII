@@ -92,9 +92,9 @@ export async function Borrar(url, id) {
     }) 
 }
 
-export async function Editar(documento, url, id) {
+export async function Editar(documento, url) {
     const token = await revisarJWT()
-    return fetch(`http://localhost:3000/${url}`, {
+    return fetch(`http://localhost:3000/${url}/edit`, {
         method: 'PUT',
         headers:{'Content-Type': 'application/json',
                  'Authorization': 'Bearer ' + token  

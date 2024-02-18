@@ -19,45 +19,45 @@ class usuariosControllers {
     }
 
     async editar(req, res, next) {
-        const {id, user, nombre, apellido, actual_p, nueva_p, confirmar_p, correo, direccion, tel} = req.body
+        const {_id, user, nombre, apellido, actual_p, nueva_p, confirmar_p, correo, direccion, tlf} = req.body
 
         try {
             //Comparaciones
             if (!user || !nombre || !apellido || !correo) {
-                return res.status('200').json({"alerta":"Debes ingresar todos los datos solicitados"}) //estado
+                return res.status('400').json({"alerta":"Debes ingresar todos los datos solicitados"}) //estado
             }
             if (!validator.isEmail(correo)) {
-                return res.status('200').json({"alerta":"El correo no es válido. Verifica e ingresa nuevamente"})
+                return res.status('400').json({"alerta":"El correo no es válido. Verifica e ingresa nuevamente"})
             }
             //En caso de cambiar contraseña
             if (actual_p || nueva_p || confirmar_p) {
 
                 try {
                     if(!actual_p) {
-                        return res.status('200').json({"alerta":"Debes ingresar tu contraseña actual"})
+                        return res.status('400').json({"alerta":"Debes ingresar tu contraseña actual"})
                     }
-                    const comparar = await usuariosModel.find({_id: id})
+                    const comparar = await usuariosModel.find({_id: _id})
                     const comparacion = await bcryptjs.compare(actual_p, comparar[0].contrasena)
                     if (!comparacion) {
-                        return res.status('200').json({"alerta":"Esta no es tu contraseña actual. Verifica e ingresa nuevamente"})
+                        return res.status('400').json({"alerta":"Esta no es tu contraseña actual. Verifica e ingresa nuevamente"})
                     }
                     if (!nueva_p && !confirmar_p) {
-                        return res.status('200').json({"alerta":"Debes ingresar la nueva contraseña y confirmarla"})
+                        return res.status('400').json({"alerta":"Debes ingresar la nueva contraseña y confirmarla"})
                     }
                     if (nueva_p != confirmar_p) {
-                        return res.status('200').json({"alerta":"Las contraseñas no coinciden. Ingresarla nuevamente"})
+                        return res.status('400').json({"alerta":"Las contraseñas no coinciden. Ingresarla nuevamente"})
                     }
                     const contrasena = await bcryptjs.hash(nueva_p, 8);
-                    await usuariosModel.updateOne({_id: id}, {$set:{contrasena:contrasena}});
+                    await usuariosModel.updateOne({_id: _id}, {$set:{contrasena:contrasena}});
                 } catch (error) {
                     console.log("Hubo algún error cambiar contraseña", error);
                     throw("Error al cambiar contraseña")
                 }
             }
             //Hacer edición
-            const documento = {user, nombre, apellido, correo, direccion, tel }
+            const documento = {user, nombre, apellido, correo, direccion, tlf }
             console.log('editar:', documento)
-            await usuariosModel.updateOne({_id: id}, {$set:documento});
+            await usuariosModel.updateOne({_id: _id}, {$set:documento});
             res.status('200').json({"exito":"Se ha editado correctamente"})
             
         } catch (error) {

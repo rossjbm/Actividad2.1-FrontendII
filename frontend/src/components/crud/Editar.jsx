@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FormEditar } from "../formularios/FormEditar";
+import{ FormEditarP } from "../formularios/FormEditarP";
 import { Listar } from "../../functions/F_fetch";
 import { Editar } from "../../functions/F_fetch";
 import { AlertaError } from "../global/ErrorAlerta";
@@ -56,7 +56,7 @@ export function EditarProductos({id, setResultado}){
             URL.onload = async function() {
                 console.log('La URL es de una imagen');
                 try {
-                    const editado = await Editar(editable, 'productos/edit')
+                    const editado = await Editar(editable, 'productos')
                     setMensaje(editado)
                     console.log(editado);
                     setShowMensaje(true)
@@ -91,10 +91,12 @@ export function EditarProductos({id, setResultado}){
         <button onClick={(e) => {Obtener(e, id)}} className='w-full h-14 bg-orange-300 text-white text-2xl sm:text-xl rounded sm:h-10'>E D I T A R</button>
 
         {editarMostrar ? <>         
-            <FormEditar setEditarMostrar={setEditarMostrar} editable={editable} handleChange={handleChange} enviar={enviar} />
+            <FormEditarP setEditarMostrar={setEditarMostrar} editable={editable} handleChange={handleChange} enviar={enviar} />
         </> : null}
         <AlertaExito mensaje={mensaje} setShowMensaje={setShowMensaje} showMensaje={showMensaje} />
         <AlertaError error={error} setShowError={setShowError} showError={showError} />
 
     </>)
 }
+
+
