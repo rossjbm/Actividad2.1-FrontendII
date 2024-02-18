@@ -51,7 +51,7 @@ Todos estos procesos los realizaremos por "Símbolos de Sistema", es decir, el <
 	(si aín no la tienes aqui te dejamos el link de descarga: ttps://www.mongodb.com/try/download/database-tools</li>
 	<li>Abrimos el terminal de nuestra computadora, y escribieremos el comando <b>mongorestore</b> seguido de <b>--db</b>, luego colocas el nombre de la DB en este caso <b>electronics</b> y por último la dirección de la DB desde nuestro repositorio la cual se encuentra en <i>..\E-Actividad-FrontEnd-4.3\backend\database\electronics></i>. Ejemplo:
 	```
-	$ mongorestore --d tuspelis C:\ruta\GitHub\FRONT-II\Actividad2.1-FrontendII\backend\database\electronics
+	$ mongorestore --d electronics C:\ruta\GitHub\FRONT-II\Actividad2.1-FrontendII\backend\database\electronics
 	```</li> 
 	<li>Das enter, y después de unos segundos la importación estará lista. De hecho te dirá el número de collecciones creadas y documentos. Para confirmar que ya cuentes con la DB ingresa los siguientes comandos en un nuevo terminal para ver las base de datos disponibles:
 	```

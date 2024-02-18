@@ -44,7 +44,7 @@ export function Inicio({sesion, setSesion, inicioMostrar}) {
             <>
                 {/* loader desactivo */}
                 {/* A paginación enviamos los valores necesarios para cualquier funcion que la requiera */}
-                <Paginacion documentos={resultado} setError={setError} setModalShow={setModalShow} Renderizado={RenderizarProductos} limite={8} sesion={sesion} setDetallePMostrar={setDetallePMostrar} setDetalleP={setDetalleP} inicioMostrar={inicioMostrar} setResultado={setResultado}/>
+                <Paginacion documentos={resultado} setError={setError} setModalShow={setModalShow} Renderizado={RenderizarProductos} limite={9} sesion={sesion} setDetallePMostrar={setDetallePMostrar} setDetalleP={setDetalleP} inicioMostrar={inicioMostrar} setResultado={setResultado}/>
                 <RenderizarDetalles detallePMostrar={detallePMostrar} detalleP={detalleP} setDetallePMostrar={setDetallePMostrar}/>
             </>
         )}
