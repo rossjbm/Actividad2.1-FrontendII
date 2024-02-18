@@ -48,6 +48,27 @@ class seguridad{
             }
         }
     }
+    async JWTconInfo(req, res, next){   
+        const authHeader = req.headers['authorization'];
+        const token = await authHeader && authHeader.split(' ')[1];
+        console.log(typeof(token));
+        try {
+            if (token == "null") {
+                throw (token);
+            }
+            const verificado = await JWT.verify(token, process.env.secreto)
+            console.log(verificado);
+            req.usuarioName = verificado.name
+            next()
+        } catch (error) {
+            if (error.name == "TokenExpiredError" || error== "null") {
+                res.status(401).json({'error':'debe iniciar sesión'})
+            }else{
+                console.log('generico1');
+                res.status(404).json({'error':error})
+            }
+        }
+    }
 }
 
 module.exports = new seguridad();

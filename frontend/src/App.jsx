@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 import { Inicio } from './components/Inicio';
 import { Usuarios } from './components/Usuarios';
 import { NuevoProducto } from './components/NuevoProducto';
+import { Perfil } from './components/global/MiPerfil';
 
 function App() {
   const [sesion, setSesion] = useState(2);
@@ -32,7 +33,7 @@ function App() {
           <Landing setSesion={setSesion} formInicio={formInicio} setFormInicio={setFormInicio}/>
         : inicioMostrar? <> <Inicio sesion={sesion} setSesion={setSesion} inicioMostrar={inicioMostrar} /> </> 
         : favoritosMostrar? <h2>FAVORITO</h2>
-        : perfilMostrar? <h2>PERFIL</h2>
+        : perfilMostrar? <Perfil/>
         : usuariosMostrar? <Usuarios/>
         : agregarMostrar? <NuevoProducto/>
         : <></>}

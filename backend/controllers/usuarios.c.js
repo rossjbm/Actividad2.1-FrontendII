@@ -118,8 +118,15 @@ class usuariosControllers {
                 res.status("404").send(error)
             }
         }
-        
-        
+    }
+    async miPerfil(req, res, next){
+        const user = req.usuarioName
+        const usuario = await usuariosModel.find({user: user})
+        console.log(usuario);
+        var informacionPublica = usuario[0];
+        informacionPublica._id=null
+        informacionPublica.contrasena=null
+        res.status('202').json({'exito':informacionPublica})
     }
 }
 
