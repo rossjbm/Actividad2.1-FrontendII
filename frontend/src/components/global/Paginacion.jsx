@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-export function Paginacion({documentos, setError, setModalShow, Renderizado, limite, sesion, setDetallePMostrar, setDetalleP , setResultado, inicioMostrar}) {
+export function Paginacion({ documentos, setError, setModalShow, Renderizado, limite, sesion, setDetallePMostrar, setDetalleP , setResultado, inicioMostrar}) {
     const [paginaActual, setPaginaActual] = useState(1);
     var maxPagina;
 

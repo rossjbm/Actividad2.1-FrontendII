@@ -19,8 +19,10 @@ export function Inicio({sesion, setSesion, inicioMostrar}) {
     const [modalShow, setModalShow] = useState(false);;
     const handleHide = () => {
         setModalShow(false);
+        if (!error.noRedirecting) {
+            setSesion(0);
+        }
         setError('');
-        setSesion(0);
     };
 
     useEffect( () => {
@@ -51,7 +53,7 @@ export function Inicio({sesion, setSesion, inicioMostrar}) {
         <MyVerticallyCenteredModal
         show={modalShow}
         onHide={handleHide}
-        error={error}
+        error={error.error? error.error : error}
         />
     </>)
 }

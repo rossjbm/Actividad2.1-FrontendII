@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Envio } from '../../functions/F_fetch';
+import { EnvioRegistro } from '../../functions/F_fetch';
 import { mostrarSeccion } from '../../functions/F_mostrar';
 
 // estilos

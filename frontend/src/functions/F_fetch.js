@@ -1,10 +1,35 @@
 import { revisarJWT } from "./F_revisarJWT"
 
 export async function Envio(registro, url) {
+    const token = await revisarJWT()
     return fetch(`http://localhost:3000/${url}`, {
         method: 'POST',
         headers:{'Content-Type': 'application/json',
                  'Authorization': 'Bearer ' + token  
+                },
+        body: JSON.stringify(registro)
+    })
+    .then(response => response.json())
+    .then(response => {
+        console.log(response);
+        if (response.exito) {
+        return response.exito
+        }else if (response.error) {
+            throw (response.error)
+        }else{
+            throw ('Servidor no responde correctamente')
+        }
+        
+    })
+    .catch ((error) => {
+        console.log("Error:", error)
+        throw error
+    }) 
+}
+export async function EnvioRegistro(registro, url) {
+    return fetch(`http://localhost:3000/${url}`, {
+        method: 'POST',
+        headers:{'Content-Type': 'application/json',
                 },
         body: JSON.stringify(registro)
     })
@@ -18,7 +43,6 @@ export async function Envio(registro, url) {
         throw error
     }) 
 }
-
 export async function Listar(url) {
     const token = await revisarJWT()
     return fetch(`http://localhost:3000/${url}`, {
@@ -48,6 +72,7 @@ export async function Listar(url) {
 }
 
 export async function Borrar(url, id) {
+    const token = await revisarJWT()
     return fetch(`http://localhost:3000/${url}/delete`, {
         method: 'DELETE',
         headers:{'Content-Type': 'application/json',

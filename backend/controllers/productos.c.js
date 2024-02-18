@@ -18,11 +18,12 @@ class productosControllers {
     }
 
     async agregar(req, res, next) {
+        console.log('aqui agregar');
         const {nombre, descripcion, categoria, cantidad, precio, marca} = req.body
         var {img} = req.body
         try {
             if (!nombre || !descripcion || !categoria || !cantidad || !precio || !marca) {
-                return res.status('200').json({"alerta":"Debes ingresar todos los datos solicitados"}) //estado
+                return res.status('200').json({"error":"Debes ingresar todos los datos solicitados"}) //estado
             }
 
             //Agregar ID
@@ -46,7 +47,7 @@ class productosControllers {
         try {
             //Comparaciones
             if (!nombre || !descripcion || !categoria || !cantidad || !precio || !marca || !img) {
-                return res.status('200').json({"alerta":"Debes ingresar todos los datos solicitados"}) //estado
+                return res.status('200').json({"error":"Debes ingresar todos los datos solicitados"}) //estado
             }
 
             //Hacer edición
@@ -64,7 +65,8 @@ class productosControllers {
     async eliminar(req, res, next) {
         const {id} = req.body
         try {
-            await productosModel.deleteOne({_id:id})
+            const perro = await productosModel.deleteOne({_id:id})
+            console.log('paqui fallo al eliminar: ',perro);
             res.status('200').json({"exito":"Se ha eliminado correctamente"})
         } catch (error) {
             console.log("Hubo algún error", error);
@@ -76,8 +78,21 @@ class productosControllers {
         console.log('deberia');
         console.log('el body',req.body)
         var _id = req.body;
-        var dato = await productosModel.find({_id:_id});
-        console.log(dato);
+        try {
+            var dato = await productosModel.find({_id:_id});
+            console.log(dato[0]);
+            if (Number(dato[0].cantidad) > 0) {
+                dato[0].cantidad = String(Number(dato[0].cantidad) - 1)
+            }else{
+                throw ('Ya no hay mas unidades de este producto')
+            }
+            const actualizar = await productosModel.updateOne({_id: _id}, {$set:dato[0]});
+            console.log(actualizar);
+            res.status('200').json({'exito':'Se ha comprado con exito'})
+        } catch (error) {
+            res.status('404').json({'error':error})
+        }
+        
     }
 }
 

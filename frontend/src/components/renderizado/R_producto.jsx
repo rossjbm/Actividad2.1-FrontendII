@@ -3,7 +3,7 @@ import { DetallesProducto } from "../../functions/F_detallesp"
 import { ComprarButton } from "../crud/Comprar"
 import { Eliminar } from "../crud/Eliminar"
 
-export function RenderizarProductos({ documentosPaginados, setError, setModalShow, sesion, setDetallePMostrar, setDetalleP, inicioMostrar, documentos, setResultado}){
+export function RenderizarProductos({documentosPaginados, setError, setModalShow, sesion, setDetallePMostrar, setDetalleP, inicioMostrar, documentos, setResultado}){
     
     return (<div className="py-5 px-3 grid grid-cols-1 h-full w-full place-content-center place-items-center gap-16 sm:grid-cols-2">
         {documentosPaginados.map((producto, i) => (
@@ -27,7 +27,7 @@ export function RenderizarProductos({ documentosPaginados, setError, setModalSho
                 </div>
                 <div className='flex justify-center mt-3'>
                     {sesion===1?
-                        <ComprarButton setError={setError} setModalShow={setModalShow} producto_id={producto._id} className='w-full h-14 bg-orange-300 hover:bg-orange-500 hover:scale-102 duration-200 border-solid border-2 rounded-md border-black-300 text-white text-2xl'>C O M P R A R</ComprarButton>
+                        <ComprarButton setResultado={setResultado} i={i} documentos={documentos} setError={setError} setModalShow={setModalShow} producto_id={producto._id} className='w-full h-14 bg-orange-300 hover:bg-orange-500 hover:scale-102 duration-200 border-solid border-2 rounded-md border-black-300 text-white text-2xl'>C O M P R A R</ComprarButton>
                     :   <button className='w-full h-14 bg-orange-300 text-white text-2xl'>E D I T A R</button>
                 }
                 </div>

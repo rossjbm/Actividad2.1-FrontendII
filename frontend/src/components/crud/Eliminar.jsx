@@ -33,6 +33,7 @@ export function Eliminar({id, documentos, setResultado, url, inicioMostrar}){
         console.log('voy a eliminar')
         try {
             const mensaje = await Borrar(url, id)
+            console.log('paso token');
             const nuevosDocumentos = documentos.filter(d => d._id != id)
             setResultado(nuevosDocumentos)
             setMensaje(mensaje)

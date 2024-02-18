@@ -8,7 +8,7 @@ import { Usuarios } from './components/Usuarios';
 import { NuevoProducto } from './components/NuevoProducto';
 
 function App() {
-  const [sesion, setSesion] = useState(0);
+  const [sesion, setSesion] = useState(1);
   const [menu, setMenu] = useState(false)
   const [formInicio, setFormInicio] = useState(true);
   //secciones

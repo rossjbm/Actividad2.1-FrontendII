@@ -39,10 +39,16 @@ export function NuevoProducto() {
             };
             URL.onload = async function() {
                 console.log('La URL es de una imagen');
-                const enviado = await Envio(nuevoP, 'productos/create')
-                setMensaje(enviado)
-                console.log(enviado);
-                setShowMensaje(true)
+                try {
+                    const enviado = await Envio(nuevoP, 'productos/create')
+                    setMensaje(enviado)
+                    console.log(enviado);
+                    setShowMensaje(true)
+                } catch (error) {
+                    console.log('error', error)
+                    setError(error)
+                    setShowError(true)
+                }
             };
             URL.src = nuevoP.img;
             

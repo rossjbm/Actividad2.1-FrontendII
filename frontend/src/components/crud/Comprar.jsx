@@ -1,6 +1,6 @@
 import { revisarJWT } from "../../functions/F_revisarJWT";
 
-export function ComprarButton({setError, setModalShow, producto_id}) {
+export function ComprarButton({setResultado, i, documentos, setError, setModalShow, producto_id}) {
 
     async function ComprarFetch(id) {
         console.log('ide del producto: ',id);
@@ -20,14 +20,20 @@ export function ComprarButton({setError, setModalShow, producto_id}) {
                 throw response.error
             }
             if (response.exito) {
-                
+                console.log('exito',documentos[i].cantidad);
+                var docu =  documentos;
+                docu[i].cantidad = String(Number(documentos[i].cantidad)- 1)
+                console.log('exito-1',docu[i].cantidad);
+                console.log(setResultado(docu));
+                 setResultado(docu);
+                console.log(documentos);
                 return response.exito
             }
         })
         .catch ((error) => {
             console.log("Error:", error)
             setModalShow(true)
-            setError(error)
+            setError({'error': error,'noRedirecting':true})
             throw error
         }) 
 
