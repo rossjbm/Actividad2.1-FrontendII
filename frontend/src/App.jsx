@@ -9,7 +9,7 @@ import { NuevoProducto } from './components/NuevoProducto';
 import { Perfil } from './components/global/MiPerfil';
 
 function App() {
-  const [sesion, setSesion] = useState(2);
+  const [sesion, setSesion] = useState(1);
   const [menu, setMenu] = useState(false)
   const [formInicio, setFormInicio] = useState(true);
   //secciones

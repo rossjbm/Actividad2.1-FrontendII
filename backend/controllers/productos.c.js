@@ -1,4 +1,5 @@
 const productosModel = require("../models/productos.m")
+const usuariosModel = require("../models/usuarios.m")
 const { v4 : uuidv4 } = require("uuid");
 
 class productosControllers {
@@ -92,8 +93,29 @@ class productosControllers {
         } catch (error) {
             res.status('404').json({'error':error})
         }
-        
     }
+    async favorito(req, res, next) {
+        const user = req.usuarioName;
+        var idProducto = req.body.id;
+        console.log(idProducto);
+        const usuario = await usuariosModel.find({user: user});
+        console.log(usuario);
+        var informacionPublica = usuario[0]; 
+      
+        // Encuentra el índice del producto en el array de favoritos
+        const indice = informacionPublica.favoritos.findIndex(e => e == idProducto);
+      
+        if (indice !== -1) {
+          // Si el producto está en el array, lo elimina
+          informacionPublica.favoritos.splice(indice, 1);
+        } else {
+          // Si el producto no está en el array, lo agrega
+          informacionPublica.favoritos.push(idProducto);
+        }
+        var _id=usuario[0]._id;
+        var mensaje = await usuariosModel.updateOne({_id: _id}, {$set:informacionPublica});
+        res.status('200').json({'exito':informacionPublica.favoritos});
+      }
 }
 
 module.exports = new productosControllers();

@@ -13,7 +13,7 @@ export function RenderizarProductos({documentosPaginados, setError, setModalShow
             <section key={i} className='border-4 border-grey-100 flex flex-col justify-center w-11/12 p-4 rounded-tr-3xl gap-4'>
                 <div className='flex justify-end'>
                     {sesion===1?
-                        <B_favorito id={i} />
+                        <B_favorito setModalShow={setModalShow} setError={setError} id={producto._id} />
                     : <Eliminar id={producto._id} url="productos" inicioMostrar={inicioMostrar} setResultado={setResultado} documentos={documentos} />}
                 </div>
                 <div className='flex justify-center' onClick={() => {DetallesProducto(producto._id, setDetallePMostrar, setDetalleP)}}>
