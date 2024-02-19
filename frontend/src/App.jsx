@@ -7,9 +7,10 @@ import { Inicio } from './components/Inicio';
 import { Usuarios } from './components/Usuarios';
 import { NuevoProducto } from './components/NuevoProducto';
 import { Perfil } from './components/global/MiPerfil';
+import { Favoritos } from './components/Favorito';
 
 function App() {
-  const [sesion, setSesion] = useState(1);
+  const [sesion, setSesion] = useState(0);
   const [menu, setMenu] = useState(false)
   const [formInicio, setFormInicio] = useState(true);
   //secciones
@@ -32,7 +33,7 @@ function App() {
         {sesion===0 ? 
           <Landing setSesion={setSesion} formInicio={formInicio} setFormInicio={setFormInicio}/>
         : inicioMostrar? <> <Inicio sesion={sesion} setSesion={setSesion} inicioMostrar={inicioMostrar} /> </> 
-        : favoritosMostrar? <h2>FAVORITO</h2>
+        : favoritosMostrar? <Favoritos sesion={sesion} setSesion={setSesion} inicioMostrar={inicioMostrar}/>
         : perfilMostrar? <Perfil perfilMostrar={perfilMostrar}/>
         : usuariosMostrar? <Usuarios/>
         : agregarMostrar? <NuevoProducto/>
